@@ -29,12 +29,7 @@ if [[ "${1:-}" == "--dry-run" ]]; then
 fi
 
 echo "Deploying chipday.dk to ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
-rsync -rltvz --delete --no-perms --no-group ${DRY_RUN} "${EXCLUDES[@]}" "${SITE_DIR}/" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/"
-
-if [[ -z "${DRY_RUN}" ]]; then
-    echo "Setting ownership to www-data..."
-    ssh "${REMOTE_USER}@${REMOTE_HOST}" "sudo chown -R www-data:www-data ${REMOTE_PATH}"
-fi
+rsync -avz --delete --rsync-path="sudo rsync" --chown=www-data:www-data ${DRY_RUN} "${EXCLUDES[@]}" "${SITE_DIR}/" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/"
 
 echo ""
 echo "Deploy complete. Site live at https://chipday.dk"
