@@ -1,0 +1,13 @@
+# /etc/nginx/sites-available/chipday.dk - HTTP only (pre-SSL)
+
+server {
+    listen 80;
+    server_name chipday.dk www.chipday.dk;
+
+    root /var/www/chipday.dk;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
