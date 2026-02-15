@@ -132,6 +132,63 @@
 
         .hero .cta:hover { background: #3d7ae8; text-decoration: none; }
 
+        .hero .cta-wip {
+            display: inline-block;
+            background: var(--bg-card);
+            color: var(--text-dim);
+            border: 1px dashed var(--orange);
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .hero .cta-wip .construction {
+            margin-right: 0.4rem;
+        }
+
+        .hero .cta-wip:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hero .cta-wip .tooltip {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s;
+            pointer-events: none;
+        }
+
+        .hero .cta-wip .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--orange);
+        }
+
+        .hero .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         /* Countdown */
         .countdown {
             display: flex;
@@ -382,7 +439,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#venue">Venue</a></li>
             <li><a href="#archive">Archive</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
 </nav>
@@ -391,8 +447,17 @@
 <div class="hero">
     <div class="date-badge">14 APRIL 2026 &middot; DTU LYNGBY</div>
     <h1>DTU <span>Chip</span>day 2026</h1>
-    <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore the Danish chip design ecosystem.</p>
-    <a href="#program" class="cta">View Program</a>
+    <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
+    <div class="cta-group">
+        <span class="cta-wip">
+            <span class="construction">&#128679;</span>Program
+            <span class="tooltip">2026 program coming soon!</span>
+        </span>
+        <span class="cta-wip">
+            <span class="construction">&#128679;</span>Registration
+            <span class="tooltip">Registration opens soon &mdash; stay tuned!</span>
+        </span>
+    </div>
     <div class="countdown" id="countdown">
         <div class="unit"><span class="num" id="cd-days">--</span><span class="label">Days</span></div>
         <div class="unit"><span class="num" id="cd-hours">--</span><span class="label">Hours</span></div>
@@ -404,7 +469,7 @@
 <!-- Program -->
 <section id="program">
     <h2>Program <span class="program-wip">2026 TBA</span></h2>
-    <p class="subtitle">The 2026 program is being finalized. Below is the 2025 program as reference.</p>
+    <p class="subtitle">The 2026 program is being finalized. Below is <strong>last year's program (2025)</strong> to give you an idea of what to expect.</p>
 
     <div class="program-item">
         <div class="program-time">12:30</div>
@@ -534,11 +599,30 @@
     <div class="about-grid">
         <div class="about-card">
             <h3>The Event</h3>
-            <p>DTU Chip Day is a yearly half-day conference and exhibition organised by DTU and the semiconductor industry in the Copenhagen area. The event features talks where DTU and industry show how integrated electronics has become the fundamental technology of our time.</p>
+            <p>DTU Chip Day is a yearly half-day conference and exhibition initiated in 2022 as a post-corona initiative by DTU Compute and a group of industry players who wanted to highlight the important but often overlooked Danish semiconductor industry. Each year in early January, a small organizing team from academia and industry come together to plan the event, held every spring at DTU.</p>
+        </div>
+        <div class="about-card">
+            <h3>Danish Chip Design</h3>
+            <p>Denmark has a world-class chip design ecosystem spanning global companies with large design teams, specialized SMEs, and cutting-edge university research. From hearing aids to quantum cryptography, Danish engineers deliver silicon expertise across a wide range of domains. Chip Day brings this community together &mdash; big and small &mdash; to connect, share knowledge, and inspire the next generation.</p>
         </div>
         <div class="about-card">
             <h3>Who Should Attend</h3>
             <p>Students, faculty, and industry professionals interested in the Danish chip design ecosystem. Expect exciting talks, company exhibitions, networking, and opportunities for thesis projects and positions.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Contact Organizing Team</h3>
+    <div class="companies-grid" style="max-width: 700px;">
+        <div class="about-card">
+            <h3>Claus Friis Pedersen</h3>
+            <p>Head of DkCCC, DTU<br>
+            <a href="mailto:clausfp@dtu.dk">clausfp@dtu.dk</a></p>
+        </div>
+        <div class="about-card">
+            <h3>J&oslash;rgen Kragh Jakobsen</h3>
+            <p>IC Works<br>
+            <a href="mailto:jkj@icworks.dk">jkj@icworks.dk</a><br>
+            <a href="tel:+4551947707">+45 5194 7707</a></p>
         </div>
     </div>
 </section>
@@ -571,20 +655,6 @@
             <h3>Chipday 2022</h3>
             <p><a href="https://www.dtu.dk/english/news/all-news/nyhed?id=07dcbdbb-b948-425a-8568-7331bb271414">Article and photos on dtu.dk</a></p>
         </div>
-    </div>
-</section>
-
-<hr class="divider">
-
-<!-- Contact -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p class="subtitle">Questions about DTU Chipday?</p>
-    <div class="about-card" style="max-width: 500px;">
-        <h3>Organizer</h3>
-        <p>Jorgen Kragh Jakobsen<br>
-        IC Works<br>
-        <a href="mailto:jkj@icworks.dk">jkj@icworks.dk</a></p>
     </div>
 </section>
 
