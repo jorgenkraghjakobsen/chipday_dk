@@ -82,15 +82,3 @@ needsLeaflet: true
     <div id="map"></div>
 </section>
 
-<hr class="divider">
-
-{# Archive #}
-<section id="archive">
-    <h2>Previous Events</h2>
-    <p class="subtitle">Past Chipday editions</p>
-    <div class="archive-list">
-        {% for event in archive %}
-        {% include "partials/archive-card.njk" %}
-        {% endfor %}
-    </div>
-</section>

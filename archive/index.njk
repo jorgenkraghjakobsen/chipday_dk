@@ -1,0 +1,17 @@
+---
+layout: base.njk
+pageTitle: "Archive - DTU Chipday"
+---
+
+<div class="page-header">
+    <h1>Previous <span>Events</span></h1>
+    <p>Past Chipday editions</p>
+</div>
+
+<section>
+    <div class="archive-list">
+        {% for event in archive %}
+        {% include "partials/archive-card.njk" %}
+        {% endfor %}
+    </div>
+</section>
