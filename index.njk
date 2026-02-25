@@ -40,24 +40,6 @@ needsLeaflet: true
 
 <hr class="divider">
 
-{# Companies #}
-<section id="companies">
-    <h2>Companies</h2>
-    <p class="subtitle">Participating companies. All will have a booth for networking, some will present.</p>
-
-    <div class="companies-grid">
-        {% for company in companies %}
-        {% include "partials/company-card.njk" %}
-        {% endfor %}
-    </div>
-
-    <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.9rem;">
-        Want your company listed? Contact <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
-    </p>
-</section>
-
-<hr class="divider">
-
 {# About #}
 <section id="about">
     <h2>About</h2>
