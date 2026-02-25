@@ -1,0 +1,12 @@
+<div class="company-row">
+    <h3>{% if company.url %}<a href="{{ company.url }}">{{ company.name }}</a>{% else %}{{ company.name }}{% endif %}</h3>
+    {% if company.description %}
+    <p class="description">{{ company.description }}</p>
+    {% endif %}
+    <p class="meta">
+        {{ company.contact_name }} &middot; <a href="mailto:{{ company.contact_email }}">{{ company.contact_email }}</a>
+        {% if company.rd_employees %}
+        &middot; ~{{ company.rd_employees }} R&amp;D employees in Denmark
+        {% endif %}
+    </p>
+</div>

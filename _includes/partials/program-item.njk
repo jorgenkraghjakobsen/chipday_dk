@@ -1,0 +1,16 @@
+<div class="program-item">
+    <div class="program-time">{{ item.time }}</div>
+    <div class="program-content">
+        <h3>{{ item.title }}</h3>
+        {% if item.description %}
+        <p class="speaker">{{ item.description }}</p>
+        {% endif %}
+        {% if item.talks %}
+        <ul class="talks">
+            {% for talk in item.talks %}
+            <li><strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>

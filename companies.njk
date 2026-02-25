@@ -1,0 +1,19 @@
+---
+layout: base.njk
+pageTitle: "Companies - DTU Chipday"
+---
+
+<div class="page-header">
+    <h1>Danish Chip <span>Companies</span></h1>
+    <p>Companies participating in DTU Chipday and the broader Danish chip design ecosystem</p>
+</div>
+
+<section>
+    {% for company in companies %}
+    {% include "partials/company-row.njk" %}
+    {% endfor %}
+
+    <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.9rem;">
+        Want your company listed? Contact <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+    </p>
+</section>

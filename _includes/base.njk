@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTU Chipday - 14 April 2026</title>
+    <title>{{ pageTitle or "DTU Chipday - " + site.event_date_display }}</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9889;</text></svg>">
     <style>
         :root {
@@ -334,6 +334,39 @@
 
         .company-card .contact a { font-size: 0.85rem; }
 
+        /* Company row (full directory) */
+        .company-row {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .company-row:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-dim);
+        }
+
+        .company-row h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-row .description {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .company-row .meta {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .company-row .meta a { font-size: 0.85rem; }
+
         /* About */
         .about-grid {
             display: grid;
@@ -389,6 +422,66 @@
         .archive-item h3 { margin-bottom: 0.5rem; }
         .archive-item p { color: var(--text-dim); font-size: 0.9rem; }
 
+        /* Archive detail page */
+        .archive-detail {
+            padding-top: 8rem;
+        }
+
+        .archive-detail .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .archive-detail .back-link:hover { color: var(--text); }
+
+        .archive-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .archive-photos img {
+            width: 100%;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .archive-docs {
+            margin-top: 1rem;
+        }
+
+        .archive-docs li {
+            list-style: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .archive-docs li:last-child { border-bottom: none; }
+
+        /* Inner page header */
+        .page-header {
+            padding: 8rem 1.5rem 3rem;
+            text-align: center;
+            background: linear-gradient(180deg, #141726 0%, var(--bg) 100%);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header h1 span { color: var(--accent); }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
@@ -423,249 +516,51 @@
             .countdown .num { font-size: 1.8rem; }
             .about-grid { grid-template-columns: 1fr; }
             .program-item { gap: 1rem; }
+            .page-header h1 { font-size: 2rem; }
         }
     </style>
+    {% if needsLeaflet %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9/dist/leaflet.css" />
+    {% endif %}
 </head>
 <body>
 
 <nav>
     <div class="nav-inner">
-        <div class="logo">DTU <span>Chipday</span></div>
+        <a href="/" class="logo" style="text-decoration:none">DTU <span>Chipday</span></a>
         <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
         <ul>
+            {% if isHomepage %}
             <li><a href="#program">Program</a></li>
             <li><a href="#companies">Companies</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#venue">Venue</a></li>
             <li><a href="#archive">Archive</a></li>
+            {% else %}
+            <li><a href="/#program">Program</a></li>
+            <li><a href="/companies/">Companies</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#venue">Venue</a></li>
+            <li><a href="/#archive">Archive</a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>
 
-<!-- Hero -->
-<div class="hero">
-    <div class="date-badge">14 APRIL 2026 &middot; DTU LYNGBY</div>
-    <h1>DTU <span>Chip</span>day 2026</h1>
-    <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
-    <div class="cta-group">
-        <span class="cta-wip">
-            <span class="construction">&#128679;</span>Program
-            <span class="tooltip">2026 program coming soon!</span>
-        </span>
-        <span class="cta-wip">
-            <span class="construction">&#128679;</span>Registration
-            <span class="tooltip">Registration opens soon &mdash; stay tuned!</span>
-        </span>
-    </div>
-    <div class="countdown" id="countdown">
-        <div class="unit"><span class="num" id="cd-days">--</span><span class="label">Days</span></div>
-        <div class="unit"><span class="num" id="cd-hours">--</span><span class="label">Hours</span></div>
-        <div class="unit"><span class="num" id="cd-mins">--</span><span class="label">Minutes</span></div>
-        <div class="unit"><span class="num" id="cd-secs">--</span><span class="label">Seconds</span></div>
-    </div>
-</div>
-
-<!-- Program -->
-<section id="program">
-    <h2>Program <span class="program-wip">2026 TBA</span></h2>
-    <p class="subtitle">The 2026 program is being finalized. Below is <strong>last year's program (2025)</strong> to give you an idea of what to expect.</p>
-
-    <div class="program-item">
-        <div class="program-time">12:30</div>
-        <div class="program-content">
-            <h3>Lunch &amp; Networking</h3>
-            <p class="speaker">Sandwiches and drinks</p>
-        </div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">13:00</div>
-        <div class="program-content">
-            <h3>Introduction</h3>
-            <ul class="talks">
-                <li><strong>Keynote</strong> &mdash; Mogens Balsby (NVIDIA)</li>
-                <li><strong>Open-Source Tools in Chip Design Education</strong> &mdash; Martin Schoeberl (DTU Compute)</li>
-                <li><strong>Analogue Chip Design Education</strong> &mdash; Per Lynggard (DTU Electro)</li>
-                <li><strong>Edu4Chip</strong> &mdash; Luca Pezzarossa (DTU Compute)</li>
-                <li><strong>Online Battery State Estimation</strong> &mdash; Simone Guglielmino (PhD)</li>
-            </ul>
-        </div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">14:00</div>
-        <div class="program-content">
-            <h3>Networking Break</h3>
-        </div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">14:30</div>
-        <div class="program-content">
-            <h3>Technical Presentations</h3>
-            <ul class="talks">
-                <li><strong>Open-Source Chip Design, Tiny Tapeout &amp; Verification</strong> &mdash; Jorgen Kragh Jakobsen (IC Works) &amp; Jacob Sander Andersen (SyoSil)</li>
-                <li><strong>EEG Measurements for Wearable Devices</strong> &mdash; Jelena Citakovic Hass-Christensen (T&amp;W Engineering)</li>
-            </ul>
-        </div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">15:15</div>
-        <div class="program-content"><h3>Networking Break</h3></div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">15:45</div>
-        <div class="program-content">
-            <h3>Technical Presentations</h3>
-            <ul class="talks">
-                <li><strong>Post-Quantum Cryptography &amp; Hardware Security</strong> &mdash; Peter Siegumfeldt (Presto Engineering)</li>
-                <li><strong>Power Integrated Circuits</strong> &mdash; Pere Llimos Muntal &amp; Thomas Souvignet (Skycore Semiconductors)</li>
-            </ul>
-        </div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">16:30</div>
-        <div class="program-content"><h3>Networking &amp; Drinks</h3></div>
-    </div>
-    <div class="program-item">
-        <div class="program-time">17:00</div>
-        <div class="program-content"><h3>Quiz &amp; Prizes</h3></div>
-    </div>
-</section>
-
-<hr class="divider">
-
-<!-- Companies -->
-<section id="companies">
-    <h2>Companies</h2>
-    <p class="subtitle">Participating companies. All will have a booth for networking, some will present.</p>
-
-    <div class="companies-grid">
-        <div class="company-card">
-            <h3>Comcores</h3>
-            <p class="contact">Jorgen Carstensen &middot; <a href="mailto:jca@comcores.com">jca@comcores.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>Synopsys</h3>
-            <p class="contact">Martine Chegaray &middot; <a href="mailto:martine@synopsys.com">martine@synopsys.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>SyoSil</h3>
-            <p class="contact">Peter Jensen &middot; <a href="mailto:peter@syosil.com">peter@syosil.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>Siemens EDA</h3>
-            <p class="contact">Sarah Allan &middot; <a href="mailto:sarah.allan@siemens.com">sarah.allan@siemens.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>SonicEdge</h3>
-            <p class="contact">Tore Jorgensen &middot; <a href="mailto:tore.joergensen@sonicedge.io">tore.joergensen@sonicedge.io</a></p>
-        </div>
-        <div class="company-card">
-            <h3>Lotus Microsystems</h3>
-            <p class="contact">Yasser Nour &middot; <a href="mailto:ynour@lotus-microsystems.com">ynour@lotus-microsystems.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>Kandou Bus Denmark</h3>
-            <p class="contact">Isac Jensen &middot; <a href="mailto:jensen@kandou.com">jensen@kandou.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>GN Hearing</h3>
-            <p class="contact">Karna Bullen &middot; <a href="mailto:kbullen@gn.com">kbullen@gn.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>NVIDIA Danmark</h3>
-            <p class="contact">Janni Sandlykke &middot; <a href="mailto:jannis@nvidia.com">jannis@nvidia.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>Hoiberg</h3>
-            <p class="contact">Ronan Mettetal &middot; <a href="mailto:rml@hoiberg.com">rml@hoiberg.com</a></p>
-        </div>
-        <div class="company-card">
-            <h3>IC Works</h3>
-            <p class="contact">Jorgen Kragh Jakobsen &middot; <a href="mailto:jkj@icworks.dk">jkj@icworks.dk</a></p>
-        </div>
-    </div>
-
-    <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.9rem;">
-        Want your company listed? Contact <a href="mailto:jkj@icworks.dk">jkj@icworks.dk</a>
-    </p>
-</section>
-
-<hr class="divider">
-
-<!-- About -->
-<section id="about">
-    <h2>About</h2>
-    <p class="subtitle">What is DTU Chip Day?</p>
-    <div class="about-grid">
-        <div class="about-card">
-            <h3>The Event</h3>
-            <p>DTU Chip Day is a yearly half-day conference and exhibition initiated in 2022 as a post-corona initiative by DTU Compute and a group of industry players who wanted to highlight the important but often overlooked Danish semiconductor industry. Each year in early January, a small organizing team from academia and industry come together to plan the event, held every spring at DTU.</p>
-        </div>
-        <div class="about-card">
-            <h3>Danish Chip Design</h3>
-            <p>Denmark has a world-class chip design ecosystem spanning global companies with large design teams, specialized SMEs, and cutting-edge university research. From hearing aids to quantum cryptography, Danish engineers deliver silicon expertise across a wide range of domains. Chip Day brings this community together &mdash; big and small &mdash; to connect, share knowledge, and inspire the next generation.</p>
-        </div>
-        <div class="about-card">
-            <h3>Who Should Attend</h3>
-            <p>Students, faculty, and industry professionals interested in the Danish chip design ecosystem. Expect exciting talks, company exhibitions, networking, and opportunities for thesis projects and positions.</p>
-        </div>
-    </div>
-
-    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Contact Organizing Team</h3>
-    <div class="companies-grid" style="max-width: 700px;">
-        <div class="about-card">
-            <h3>Claus Friis Pedersen</h3>
-            <p>Head of DkCCC, DTU<br>
-            <a href="mailto:clausfp@dtu.dk">clausfp@dtu.dk</a></p>
-        </div>
-        <div class="about-card">
-            <h3>J&oslash;rgen Kragh Jakobsen</h3>
-            <p>IC Works<br>
-            <a href="mailto:jkj@icworks.dk">jkj@icworks.dk</a><br>
-            <a href="tel:+4551947707">+45 5194 7707</a></p>
-        </div>
-    </div>
-</section>
-
-<hr class="divider">
-
-<!-- Venue -->
-<section id="venue">
-    <h2>Venue</h2>
-    <p class="subtitle">DTU Lyngby Campus, Building 101</p>
-    <div id="map"></div>
-</section>
-
-<hr class="divider">
-
-<!-- Archive -->
-<section id="archive">
-    <h2>Previous Events</h2>
-    <p class="subtitle">Past Chipday editions</p>
-    <div class="archive-list">
-        <div class="archive-item">
-            <h3>Chipday 2025</h3>
-            <p>Keynote by Mogens Balsby (NVIDIA). Sessions on open-source chip design, wearable EEG, post-quantum cryptography, and power ICs.</p>
-        </div>
-        <div class="archive-item">
-            <h3>Chipday 2024</h3>
-            <p>16 April 2024 at DTU. Talks on FPGA development, DSP on custom IC, hearing aid MI links, and open-source verification.</p>
-        </div>
-        <div class="archive-item">
-            <h3>Chipday 2022</h3>
-            <p><a href="https://www.dtu.dk/english/news/all-news/nyhed?id=07dcbdbb-b948-425a-8568-7331bb271414">Article and photos on dtu.dk</a></p>
-        </div>
-    </div>
-</section>
+{{ content | safe }}
 
 <footer>
-    <p>&copy; 2026 DTU Chipday &middot; Organised by <a href="https://icworks.dk">IC Works</a> and DTU</p>
+    <p>&copy; {{ site.event_year }} DTU Chipday &middot; Organised by <a href="https://icworks.dk">IC Works</a> and DTU</p>
 </footer>
 
+{% if needsLeaflet %}
 <script src="https://unpkg.com/leaflet@1.9/dist/leaflet.js"></script>
+{% endif %}
+
+{% if isHomepage %}
 <script>
     // Countdown
-    const target = new Date('2026-04-14T12:00:00+02:00');
+    const target = new Date('{{ site.event_date }}');
     function updateCountdown() {
         const now = new Date();
         const diff = target - now;
@@ -686,12 +581,12 @@
     setInterval(updateCountdown, 1000);
 
     // Map with dark tiles
-    const map = L.map('map', { scrollWheelZoom: false }).setView([55.786, 12.524], 16);
+    const map = L.map('map', { scrollWheelZoom: false }).setView([{{ site.map_lat }}, {{ site.map_lng }}], {{ site.map_zoom }});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OSM &amp; CARTO',
         maxZoom: 19
     }).addTo(map);
-    L.marker([55.786, 12.524]).addTo(map).bindPopup('<strong>DTU Building 101</strong><br>Chipday venue').openPopup();
+    L.marker([{{ site.map_lat }}, {{ site.map_lng }}]).addTo(map).bindPopup('<strong>DTU Building 101</strong><br>Chipday venue').openPopup();
 
     // Smooth scroll & close mobile menu
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -707,6 +602,7 @@
         });
     });
 </script>
+{% endif %}
 
 </body>
 </html>

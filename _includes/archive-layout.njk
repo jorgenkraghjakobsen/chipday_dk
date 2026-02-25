@@ -1,0 +1,54 @@
+---
+layout: base.njk
+---
+
+{% set event = archive | getByYear(archiveYear) %}
+
+<div class="page-header">
+    <h1>Chipday <span>{{ event.year }}</span></h1>
+    <p>{{ event.date_display }} &middot; {{ event.venue }}</p>
+</div>
+
+<section>
+    <a href="/#archive" class="archive-detail back-link">&larr; Back to all events</a>
+
+    <p style="color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem;">{{ event.description }}</p>
+
+    {% if event.external_link %}
+    <p style="margin-bottom: 2rem;"><a href="{{ event.external_link }}">Read more on dtu.dk &rarr;</a></p>
+    {% endif %}
+
+    {% if event.flyer %}
+    <p style="margin-bottom: 2rem;"><a href="{{ event.flyer }}">Download event flyer (PDF) &rarr;</a></p>
+    {% endif %}
+
+    {% if event.program.length > 0 %}
+    <h2 style="margin-bottom: 1.5rem;">Program</h2>
+    {% for item in event.program %}
+    {% include "partials/program-item.njk" %}
+    {% endfor %}
+    {% endif %}
+
+    {% if event.documents.length > 0 %}
+    <h2 style="margin-top: 3rem; margin-bottom: 1rem;">Documents &amp; Slides</h2>
+    <ul class="archive-docs">
+        {% for doc in event.documents %}
+        {% if doc.public %}
+        <li><a href="{{ doc.path }}">{{ doc.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if event.photos.length > 0 %}
+    <h2 style="margin-top: 3rem; margin-bottom: 1rem;">Photos</h2>
+    <div class="archive-photos">
+        {% for photo in event.photos %}
+        <div>
+            <img src="{{ photo.path }}" alt="{{ photo.caption }}" loading="lazy">
+            {% if photo.caption %}<p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.3rem;">{{ photo.caption }}</p>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>

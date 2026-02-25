@@ -1,0 +1,82 @@
+- year: 2025
+  date_display: "Spring 2025"
+  venue: "DTU Lyngby Campus, Building 101"
+  description: "Keynote by Mogens Balsby (NVIDIA). Sessions on open-source chip design, wearable EEG, post-quantum cryptography, and power ICs."
+  flyer: null
+  photos: []
+  documents: []
+  program:
+    - time: "12:30"
+      title: "Lunch & Networking"
+      type: "break"
+      description: "Sandwiches and drinks"
+    - time: "13:00"
+      title: "Introduction"
+      type: "session"
+      talks:
+        - title: "Keynote"
+          speaker: "Mogens Balsby"
+          affiliation: "NVIDIA"
+        - title: "Open-Source Tools in Chip Design Education"
+          speaker: "Martin Schoeberl"
+          affiliation: "DTU Compute"
+        - title: "Analogue Chip Design Education"
+          speaker: "Per Lynggard"
+          affiliation: "DTU Electro"
+        - title: "Edu4Chip"
+          speaker: "Luca Pezzarossa"
+          affiliation: "DTU Compute"
+        - title: "Online Battery State Estimation"
+          speaker: "Simone Guglielmino"
+          affiliation: "PhD"
+    - time: "14:00"
+      title: "Networking Break"
+      type: "break"
+    - time: "14:30"
+      title: "Technical Presentations"
+      type: "session"
+      talks:
+        - title: "Open-Source Chip Design, Tiny Tapeout & Verification"
+          speaker: "Jorgen Kragh Jakobsen & Jacob Sander Andersen"
+          affiliation: "IC Works & SyoSil"
+        - title: "EEG Measurements for Wearable Devices"
+          speaker: "Jelena Citakovic Hass-Christensen"
+          affiliation: "T&W Engineering"
+    - time: "15:15"
+      title: "Networking Break"
+      type: "break"
+    - time: "15:45"
+      title: "Technical Presentations"
+      type: "session"
+      talks:
+        - title: "Post-Quantum Cryptography & Hardware Security"
+          speaker: "Peter Siegumfeldt"
+          affiliation: "Presto Engineering"
+        - title: "Power Integrated Circuits"
+          speaker: "Pere Llimos Muntal & Thomas Souvignet"
+          affiliation: "Skycore Semiconductors"
+    - time: "16:30"
+      title: "Networking & Drinks"
+      type: "break"
+    - time: "17:00"
+      title: "Quiz & Prizes"
+      type: "break"
+
+- year: 2024
+  date_display: "16 April 2024"
+  venue: "DTU Lyngby Campus"
+  description: "Talks on FPGA development, DSP on custom IC, hearing aid MI links, and open-source verification."
+  flyer: null
+  photos: []
+  documents: []
+  program: []
+
+- year: 2022
+  date_display: "2022"
+  venue: "DTU Lyngby Campus"
+  description: "The inaugural DTU Chip Day."
+  external_link: "https://www.dtu.dk/english/news/all-news/nyhed?id=07dcbdbb-b948-425a-8568-7331bb271414"
+  flyer: null
+  photos: []
+  documents: []
+  program: []

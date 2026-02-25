@@ -1,0 +1,114 @@
+---
+layout: base.njk
+isHomepage: true
+needsLeaflet: true
+---
+
+{# Hero #}
+<div class="hero">
+    <div class="date-badge">{{ site.event_date_display | upper }} &middot; DTU LYNGBY</div>
+    <h1>DTU <span>Chip</span>day {{ site.event_year }}</h1>
+    <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
+    <div class="cta-group">
+        <span class="cta-wip">
+            <span class="construction">&#128679;</span>Program
+            <span class="tooltip">{{ site.event_year }} program coming soon!</span>
+        </span>
+        <span class="cta-wip">
+            <span class="construction">&#128679;</span>Registration
+            <span class="tooltip">Registration opens soon &mdash; stay tuned!</span>
+        </span>
+    </div>
+    <div class="countdown" id="countdown">
+        <div class="unit"><span class="num" id="cd-days">--</span><span class="label">Days</span></div>
+        <div class="unit"><span class="num" id="cd-hours">--</span><span class="label">Hours</span></div>
+        <div class="unit"><span class="num" id="cd-mins">--</span><span class="label">Minutes</span></div>
+        <div class="unit"><span class="num" id="cd-secs">--</span><span class="label">Seconds</span></div>
+    </div>
+</div>
+
+{# Program - show last year's as reference #}
+{% set lastEvent = archive | getByYear(2025) %}
+<section id="program">
+    <h2>Program <span class="program-wip">{{ site.event_year }} TBA</span></h2>
+    <p class="subtitle">The {{ site.event_year }} program is being finalized. Below is <strong>last year's program (2025)</strong> to give you an idea of what to expect.</p>
+
+    {% for item in lastEvent.program %}
+    {% include "partials/program-item.njk" %}
+    {% endfor %}
+</section>
+
+<hr class="divider">
+
+{# Companies #}
+<section id="companies">
+    <h2>Companies</h2>
+    <p class="subtitle">Participating companies. All will have a booth for networking, some will present.</p>
+
+    <div class="companies-grid">
+        {% for company in companies %}
+        {% include "partials/company-card.njk" %}
+        {% endfor %}
+    </div>
+
+    <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.9rem;">
+        Want your company listed? Contact <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+    </p>
+</section>
+
+<hr class="divider">
+
+{# About #}
+<section id="about">
+    <h2>About</h2>
+    <p class="subtitle">What is DTU Chip Day?</p>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>The Event</h3>
+            <p>DTU Chip Day is a yearly half-day conference and exhibition initiated in 2022 as a post-corona initiative by DTU Compute and a group of industry players who wanted to highlight the important but often overlooked Danish semiconductor industry. Each year in early January, a small organizing team from academia and industry come together to plan the event, held every spring at DTU.</p>
+        </div>
+        <div class="about-card">
+            <h3>Danish Chip Design</h3>
+            <p>Denmark has a world-class chip design ecosystem spanning global companies with large design teams, specialized SMEs, and cutting-edge university research. From hearing aids to quantum cryptography, Danish engineers deliver silicon expertise across a wide range of domains. Chip Day brings this community together &mdash; big and small &mdash; to connect, share knowledge, and inspire the next generation.</p>
+        </div>
+        <div class="about-card">
+            <h3>Who Should Attend</h3>
+            <p>Students, faculty, and industry professionals interested in the Danish chip design ecosystem. Expect exciting talks, company exhibitions, networking, and opportunities for thesis projects and positions.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Contact Organizing Team</h3>
+    <div class="companies-grid" style="max-width: 700px;">
+        {% for org in organizers %}
+        <div class="about-card">
+            <h3>{{ org.name }}</h3>
+            <p>{{ org.role }}<br>
+            <a href="mailto:{{ org.email }}">{{ org.email }}</a>
+            {% if org.phone %}<br><a href="tel:{{ org.phone }}">{{ org.phone }}</a>{% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+
+{# Venue #}
+<section id="venue">
+    <h2>Venue</h2>
+    <p class="subtitle">{{ site.venue }}</p>
+    <div id="map"></div>
+</section>
+
+<hr class="divider">
+
+{# Archive #}
+<section id="archive">
+    <h2>Previous Events</h2>
+    <p class="subtitle">Past Chipday editions</p>
+    <div class="archive-list">
+        {% for event in archive %}
+        {% include "partials/archive-card.njk" %}
+        {% endfor %}
+    </div>
+</section>

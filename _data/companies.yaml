@@ -1,0 +1,131 @@
+- name: "Comcores"
+  url: "https://comcores.com"
+  contact_name: "Jorgen Carstensen"
+  contact_email: "jca@comcores.com"
+  logo: "/assets/logos/comcores.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Comcores develops high-performance IP cores for Ethernet, TSN, and telecom infrastructure."
+  rd_employees: null
+
+- name: "Synopsys"
+  url: "https://synopsys.com"
+  contact_name: "Martine Chegaray"
+  contact_email: "martine@synopsys.com"
+  logo: "/assets/logos/synopsys.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Synopsys is a global leader in EDA tools, IP, and software security, with a significant design team in Denmark."
+  rd_employees: null
+
+- name: "SyoSil"
+  url: "https://syosil.com"
+  contact_name: "Peter Jensen"
+  contact_email: "peter@syosil.com"
+  logo: "/assets/logos/syosil.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "SyoSil specializes in advanced verification solutions and open-source UVM libraries."
+  rd_employees: null
+
+- name: "Siemens EDA"
+  url: "https://eda.sw.siemens.com"
+  contact_name: "Sarah Allan"
+  contact_email: "sarah.allan@siemens.com"
+  logo: "/assets/logos/siemens-eda.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Siemens EDA (formerly Mentor Graphics) provides IC design and verification tools used worldwide."
+  rd_employees: null
+
+- name: "SonicEdge"
+  url: "https://sonicedge.io"
+  contact_name: "Tore Jorgensen"
+  contact_email: "tore.joergensen@sonicedge.io"
+  logo: "/assets/logos/sonicedge.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "SonicEdge designs ultra-low-power audio and voice processing chips."
+  rd_employees: null
+
+- name: "Lotus Microsystems"
+  url: "https://lotus-microsystems.com"
+  contact_name: "Yasser Nour"
+  contact_email: "ynour@lotus-microsystems.com"
+  logo: "/assets/logos/lotus-microsystems.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Lotus Microsystems develops power management ICs and mixed-signal solutions."
+  rd_employees: null
+
+- name: "Kandou Bus Denmark"
+  url: "https://kandou.com"
+  contact_name: "Isac Jensen"
+  contact_email: "jensen@kandou.com"
+  logo: "/assets/logos/kandou.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Kandou develops high-speed chip-to-chip interconnect solutions using advanced signaling."
+  rd_employees: null
+
+- name: "GN Hearing"
+  url: "https://gnhearing.com"
+  contact_name: "Karna Bullen"
+  contact_email: "kbullen@gn.com"
+  logo: "/assets/logos/gn-hearing.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "GN Hearing designs custom hearing aid chips with advanced DSP and wireless connectivity."
+  rd_employees: null
+
+- name: "NVIDIA Danmark"
+  url: "https://nvidia.com"
+  contact_name: "Janni Sandlykke"
+  contact_email: "jannis@nvidia.com"
+  logo: "/assets/logos/nvidia.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "NVIDIA's Danish team works on GPU architecture, networking, and AI hardware design."
+  rd_employees: null
+
+- name: "Hoiberg"
+  url: "https://hoiberg.com"
+  contact_name: "Ronan Mettetal"
+  contact_email: "rml@hoiberg.com"
+  logo: "/assets/logos/hoiberg.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "Hoiberg is a patent attorney firm specializing in semiconductor and electronics IP protection."
+  rd_employees: null
+
+- name: "IC Works"
+  url: "https://icworks.dk"
+  contact_name: "Jorgen Kragh Jakobsen"
+  contact_email: "jkj@icworks.dk"
+  logo: "/assets/logos/icworks.svg"
+  logo_meta:
+    bg: "#ffffff"
+    padding: "0.5rem"
+    max_width: "120px"
+  description: "IC Works provides open-source chip design consulting, Tiny Tapeout projects, and verification services."
+  rd_employees: null
