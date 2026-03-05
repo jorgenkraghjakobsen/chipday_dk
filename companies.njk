@@ -1,19 +1,64 @@
 ---
 layout: base.njk
-pageTitle: "Companies - DTU Chipday"
+pageTitle: "Danish Chip Ecosystem - DTU Chipday"
 ---
 
 <div class="page-header">
-    <h1>Danish Chip <span>Companies</span></h1>
-    <p>Companies participating in DTU Chipday and the broader Danish chip design ecosystem</p>
+    <h1>The Danish Chip <span>Ecosystem</span></h1>
+    <p>A small country with an outsized impact on global semiconductor design</p>
 </div>
 
 <section>
-    {% for company in companies %}
-    {% include "partials/company-row.njk" %}
-    {% endfor %}
+    <h2>A World-Class Design Culture</h2>
+    <p>Denmark is home to a remarkably deep and diverse chip design ecosystem. Despite its small size, the country punches far above its weight in the global semiconductor industry. Hundreds of highly skilled engineers work across multinational corporations, specialized SMEs, and university research labs &mdash; designing silicon that powers everything from hearing aids to hyperscale data centers.</p>
+    <p style="margin-top: 1rem;">This concentration of talent did not happen by accident. It grew from decades of strong university programs, close industry&ndash;academia collaboration, and a culture of engineering excellence that attracts global companies to establish R&amp;D centres in Denmark.</p>
 
-    <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.9rem;">
-        Want your company listed? Contact <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
+    <h3 style="margin-top: 3rem; margin-bottom: 1.5rem;">Domains of Excellence</h3>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>High-Speed Networking</h3>
+            <p>Danish teams design IP cores and ASICs for Ethernet, optical transport, and data-centre interconnects running at 100&nbsp;Gbps and beyond. Companies in this space deliver the silicon that keeps global cloud infrastructure connected.</p>
+        </div>
+        <div class="about-card">
+            <h3>Hearing Devices &amp; Audiology</h3>
+            <p>Denmark is the world capital of hearing-aid technology. Companies like GN, Demant, and WS Audiology design custom ultra-low-power DSP chips with advanced noise cancellation, wireless connectivity, and on-chip machine learning &mdash; all in devices small enough to fit inside an ear canal.</p>
+        </div>
+        <div class="about-card">
+            <h3>RF &amp; Wireless</h3>
+            <p>From cellular basebands to Bluetooth and Wi-Fi front-ends, Danish RF designers have a long track record in radio-frequency and mixed-signal IC design, rooted in a heritage that stretches back to the early days of GSM and DECT.</p>
+        </div>
+        <div class="about-card">
+            <h3>EDA &amp; Design Tools</h3>
+            <p>Major EDA vendors maintain significant R&amp;D teams in Denmark, working on the design and verification tools that chip engineers worldwide depend on. This includes work on synthesis, place-and-route, simulation, and formal verification.</p>
+        </div>
+        <div class="about-card">
+            <h3>Turnkey &amp; Design Services</h3>
+            <p>A growing number of Danish consultancies offer end-to-end chip design services &mdash; from specification and RTL development through physical design to production test &mdash; enabling startups and non-semiconductor companies to bring custom silicon to market.</p>
+        </div>
+        <div class="about-card">
+            <h3>Advanced Verification &amp; Testing</h3>
+            <p>Verification is where the majority of chip development effort goes, and Denmark has deep expertise in UVM-based verification, formal methods, FPGA prototyping, and production test development. Specialist firms and in-house teams ensure silicon works correctly before it reaches the fab.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<section>
+    <h2>The Nokia 3310 &mdash; Designed in Denmark</h2>
+    <p class="subtitle">How Danish chip designers helped create the world's most iconic mobile phone</p>
+
+    <p>Few people outside the industry know that the chipset powering the legendary Nokia 3310 was designed largely by Danish engineers. In the late 1990s, Nokia's R&amp;D centre in Denmark &mdash; originally established through the acquisition of Danish semiconductor companies &mdash; became a centre of excellence for mobile phone baseband and RF chip design.</p>
+
+    <p style="margin-top: 1rem;">The Danish site was responsible for designing the baseband processor and radio-frequency circuits that went into the 3310 and several other massively successful Nokia handsets. The chipset had to meet extreme constraints: it needed to deliver reliable GSM voice and SMS on a power budget that allowed weeks of standby time from a single small battery, all while hitting an aggressive cost target for a mass-market device.</p>
+
+    <p style="margin-top: 1rem;">The engineers in Denmark rose to the challenge. Drawing on a deep local tradition of low-power mixed-signal design and DSP expertise &mdash; much of it cultivated through the Danish hearing-aid industry and university research at DTU &mdash; they delivered a chipset that was a masterclass in pragmatic engineering. The Nokia 3310 went on to sell over 126&nbsp;million units and became a cultural icon for its near-indestructible reliability.</p>
+
+    <p style="margin-top: 1rem;">The Nokia story illustrates a recurring pattern in Danish chip design: a relatively small team of highly skilled engineers, working in a collaborative environment with close ties to academia, can deliver world-class silicon that competes on a global stage. That same culture and talent pool is alive and thriving today across the companies and research groups represented at DTU Chipday.</p>
+</section>
+
+<section>
+    <p style="color: var(--text-dim); font-size: 0.9rem;">
+        Want to participate in DTU Chipday? Contact <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>
     </p>
 </section>
