@@ -53,17 +53,17 @@
   type: "break"
 
 - time: "15:45"
-  title: "Keynote: Vision for Chip Design"
+  title: "Keynote: Opportunities for DK Chip Design"
   type: "keynote"
   speaker: "Michael Smedegaard"
   affiliation: "Meta, Chief Audio HW Architect"
-  description: "Vision for chip design (15 min)"
+  description: "Opportunities for DK chip design (15 min)"
 
 - time: "16:00"
   title: "Technical Presentations II"
   type: "session"
   talks:
-    - title: "Opportunities for DK Chip Design"
+    - title: "Quantum Foundry"
       speaker: "Tobias Saerkjaer"
       affiliation: "Quantum Foundry, Chip Design Engineer"
     - title: "TBA"
