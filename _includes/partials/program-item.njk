@@ -1,7 +1,10 @@
-<div class="program-item">
+<div class="program-item{% if item.type == 'keynote' %} program-keynote{% endif %}">
     <div class="program-time">{{ item.time }}</div>
     <div class="program-content">
         <h3>{{ item.title }}</h3>
+        {% if item.type == "keynote" %}
+        <p class="speaker">{{ item.speaker }}{% if item.affiliation %} &mdash; {{ item.affiliation }}{% endif %}</p>
+        {% endif %}
         {% if item.description %}
         <p class="speaker">{{ item.description }}</p>
         {% endif %}
