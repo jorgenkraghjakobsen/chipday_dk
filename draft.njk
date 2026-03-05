@@ -1,0 +1,16 @@
+---
+layout: base.njk
+pageTitle: "DRAFT Program 2026 - DTU Chipday"
+---
+
+<div class="page-header" style="border-bottom: 3px dashed var(--orange);">
+    <h1>Program <span>2026</span> <span class="program-wip">DRAFT</span></h1>
+    <p>{{ site.event_date_display }} &middot; {{ site.venue }}</p>
+    <p style="color: var(--orange); margin-top: 1rem; font-size: 0.9rem;">This page is not linked from the site. Edit <code>_data/program2026.yaml</code> to update.</p>
+</div>
+
+<section>
+    {% for item in program2026 %}
+    {% include "partials/program-item.njk" %}
+    {% endfor %}
+</section>

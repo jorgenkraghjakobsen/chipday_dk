@@ -1,0 +1,59 @@
+- time: "12:30"
+  title: "Lunch & Networking"
+  type: "break"
+  description: "Sandwiches and drinks"
+
+- time: "13:00"
+  title: "Opening & Keynote"
+  type: "keynote"
+  speaker: "TBA"
+  affiliation: ""
+
+- time: "13:30"
+  title: "Session 1"
+  type: "session"
+  talks:
+    - title: "Talk 1"
+      speaker: "TBA"
+      affiliation: ""
+    - title: "Talk 2"
+      speaker: "TBA"
+      affiliation: ""
+
+- time: "14:15"
+  title: "Networking Break"
+  type: "break"
+
+- time: "14:45"
+  title: "Session 2"
+  type: "session"
+  talks:
+    - title: "Talk 3"
+      speaker: "TBA"
+      affiliation: ""
+    - title: "Talk 4"
+      speaker: "TBA"
+      affiliation: ""
+
+- time: "15:30"
+  title: "Networking Break"
+  type: "break"
+
+- time: "16:00"
+  title: "Session 3"
+  type: "session"
+  talks:
+    - title: "Talk 5"
+      speaker: "TBA"
+      affiliation: ""
+    - title: "Talk 6"
+      speaker: "TBA"
+      affiliation: ""
+
+- time: "16:45"
+  title: "Networking & Drinks"
+  type: "break"
+
+- time: "17:15"
+  title: "Quiz & Prizes"
+  type: "break"
