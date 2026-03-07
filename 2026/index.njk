@@ -1,0 +1,269 @@
+---
+layout: base.njk
+title: Chip Day 2026 - Speaker Resources
+permalink: /2026/
+---
+
+<div class="page-header">
+  <h1>Speaker <span>Resources</span></h1>
+  <p>Practical information and upload area for Chip Day 2026 presenters</p>
+</div>
+
+<section style="max-width: 800px; margin: 0 auto;">
+  <h2>Presentation Template</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+    To create a unified look across the event, we ask all speakers to use our common presentation template.
+    This helps communicate a shared community identity for Danish chip design.
+    Individual presentations will be merged into one combined deck per session,
+    so the final result is three seamless slide decks — one for each session.
+  </p>
+  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+    Please upload your slides to your designated slot below. The backend will
+    automatically merge them into the final session presentations.
+  </p>
+  <p style="margin-bottom: 1.5rem;">
+    <a href="/2026/ChipDay2026Template.pptx" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600;">Download Template (.pptx)</a>
+  </p>
+
+  <h3 style="margin-bottom: 0.75rem;">Example from 2025</h3>
+  <div style="margin-bottom: 2.5rem;">
+    <img src="/2026/example-2025.png" alt="Example: Chip Design &amp; Verification Using Open-Source Tools - DTU Chip Day 2025" style="max-width: 500px; width: 100%; border-radius: 0.75rem; border: 1px solid var(--border);">
+    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Chip Design &amp; Verification Using Open-Source Tools &mdash; J. K. Jakobsen (IC Works) &amp; J. S. Andersen (SyoSil), Chip Day 2025</p>
+  </div>
+
+  <hr class="divider" style="margin-bottom: 2.5rem;">
+
+  <div id="uploads">
+
+  <h2>Session 1: Chip Education in Denmark</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">13:00 &ndash; 14:00</p>
+  <div style="margin-bottom: 2.5rem;">
+    {% for slot in [
+      {id: "s1-intro",     title: "Welcome & Introduction",                    who: "Organizers"},
+      {id: "s1-dam",       title: "Keynote: The Importance of IC Development",  who: "Brian Dam, GN"},
+      {id: "s1-lynggaard", title: "Analogue Courses",                           who: "Per Lynggaard, DTU Electro"},
+      {id: "s1-schoeberl", title: "First Student Tape-Out",   who: "Martin Schoeberl, DTU Compute"},
+      {id: "s1-moradi",    title: "Research and Chip Courses at SDU",           who: "Farshad Moradi, SDU Micro Electronics"}
+    ] %}
+    <div class="upload-slot" data-slot="{{ slot.id }}">
+      <div class="slot-info">
+        <strong>{{ slot.title }}</strong>
+        <span style="color: var(--text-dim);"> &mdash; {{ slot.who }}</span>
+      </div>
+      <div class="slot-status" id="status-{{ slot.id }}">
+        <span class="status-none">No file uploaded</span>
+      </div>
+      <form action="/2026/upload/{{ slot.id }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <label class="file-label">
+          <input type="file" name="file" accept=".pptx,.ppt,.pdf,.key" required>
+          <span class="file-btn">Choose file</span>
+        </label>
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Session 2: Technical Presentations I</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">14:30 &ndash; 15:15</p>
+  <div style="margin-bottom: 2.5rem;">
+    {% for slot in [
+      {id: "s2-nour", title: "Lotus Microsystems",  who: "Yasser Nour, Lotus Microsystems"},
+      {id: "s2-dahl", title: "EDA Startup",          who: "Nicolai Dahl, IC-Optimize"},
+      {id: "s2-tba",  title: "TBA",                  who: "TBA"}
+    ] %}
+    <div class="upload-slot" data-slot="{{ slot.id }}">
+      <div class="slot-info">
+        <strong>{{ slot.title }}</strong>
+        <span style="color: var(--text-dim);"> &mdash; {{ slot.who }}</span>
+      </div>
+      <div class="slot-status" id="status-{{ slot.id }}">
+        <span class="status-none">No file uploaded</span>
+      </div>
+      <form action="/2026/upload/{{ slot.id }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <label class="file-label">
+          <input type="file" name="file" accept=".pptx,.ppt,.pdf,.key" required>
+          <span class="file-btn">Choose file</span>
+        </label>
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Session 3: Technical Presentations II</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">15:45 &ndash; 16:30</p>
+  <div style="margin-bottom: 2.5rem;">
+    {% for slot in [
+      {id: "s3-smedegaard", title: "Keynote: Opportunities for DK Chip Design", who: "Michael Smedegaard, Meta"},
+      {id: "s3-saerkjaer",  title: "Quantum Foundry",                            who: "Tobias Saerkjaer, Quantum Foundry"},
+      {id: "s3-tba",        title: "TBA",                                        who: "TBA"}
+    ] %}
+    <div class="upload-slot" data-slot="{{ slot.id }}">
+      <div class="slot-info">
+        <strong>{{ slot.title }}</strong>
+        <span style="color: var(--text-dim);"> &mdash; {{ slot.who }}</span>
+      </div>
+      <div class="slot-status" id="status-{{ slot.id }}">
+        <span class="status-none">No file uploaded</span>
+      </div>
+      <form action="/2026/upload/{{ slot.id }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <label class="file-label">
+          <input type="file" name="file" accept=".pptx,.ppt,.pdf,.key" required>
+          <span class="file-btn">Choose file</span>
+        </label>
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+
+  </div><!-- #uploads -->
+
+  <hr class="divider" style="margin-bottom: 2.5rem;">
+
+  <h2>Merged Session Decks</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">
+    These are auto-generated after each upload. Download the latest merged deck for each session.
+  </p>
+  <div style="margin-bottom: 2.5rem;" id="merged-decks">
+    <div class="upload-slot" id="merged-session-1">
+      <strong>Session 1: Chip Education in Denmark</strong>
+      <span class="merged-status" style="color: var(--text-dim); margin-left: 0.5rem;">Waiting for uploads...</span>
+    </div>
+    <div class="upload-slot" id="merged-session-2">
+      <strong>Session 2: Technical Presentations I</strong>
+      <span class="merged-status" style="color: var(--text-dim); margin-left: 0.5rem;">Waiting for uploads...</span>
+    </div>
+    <div class="upload-slot" id="merged-session-3">
+      <strong>Session 3: Technical Presentations II</strong>
+      <span class="merged-status" style="color: var(--text-dim); margin-left: 0.5rem;">Waiting for uploads...</span>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin-bottom: 2.5rem;">
+
+  <h2>Practical Information</h2>
+  <ul style="color: var(--text-dim); margin-bottom: 2.5rem; padding-left: 1.2rem;">
+    <li style="margin-bottom: 0.5rem;">Coming soon</li>
+  </ul>
+</section>
+
+<style>
+  .upload-slot {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .upload-slot:hover {
+    border-color: var(--accent-dim);
+  }
+  .slot-status {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+  .status-none {
+    color: var(--text-dim);
+  }
+  .status-uploaded {
+    color: var(--green);
+    font-weight: 600;
+  }
+  .upload-form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .file-label {
+    position: relative;
+    cursor: pointer;
+  }
+  .file-label input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  .file-btn {
+    display: inline-block;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.4rem 1rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .file-btn:hover {
+    border-color: var(--accent-dim);
+    color: var(--text);
+  }
+  .file-label.has-file .file-btn {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .upload-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .upload-btn:hover {
+    background: #3d7ae8;
+  }
+</style>
+
+<script>
+  // Show selected filename
+  document.querySelectorAll('.file-label input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const label = input.closest('.file-label');
+      const btn = label.querySelector('.file-btn');
+      if (input.files.length) {
+        btn.textContent = input.files[0].name;
+        label.classList.add('has-file');
+      } else {
+        btn.textContent = 'Choose file';
+        label.classList.remove('has-file');
+      }
+    });
+  });
+
+  // Fetch upload status on load
+  fetch('/2026/upload/status')
+    .then(r => r.json())
+    .then(data => {
+      // Slot upload status
+      if (data.slots) {
+        for (const [slotId, info] of Object.entries(data.slots)) {
+          const el = document.getElementById('status-' + slotId);
+          if (!el) continue;
+          if (info.uploaded) {
+            el.innerHTML = '<span class="status-uploaded">Uploaded: ' + info.filename + '</span>';
+          }
+        }
+      }
+      // Merged deck status
+      if (data.merged) {
+        for (const [sessionId, info] of Object.entries(data.merged)) {
+          const el = document.getElementById('merged-' + sessionId);
+          if (!el) continue;
+          const status = el.querySelector('.merged-status');
+          if (info.available) {
+            status.innerHTML = '<a href="/2026/merged/' + sessionId + '.pptx" style="color: var(--green); font-weight: 600;">Download merged deck</a>';
+          }
+        }
+      }
+    })
+    .catch(() => {});
+</script>
