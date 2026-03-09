@@ -11,24 +11,25 @@ permalink: /2026/
 
 <section style="max-width: 800px; margin: 0 auto;">
   <h2>Presentation Template</h2>
-  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-    To create a unified look across the event, we ask all speakers to use our common presentation template.
-    This helps communicate a shared community identity for Danish chip design.
-    Individual presentations will be merged into one combined deck per session,
-    so the final result is three seamless slide decks — one for each session.
-  </p>
-  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-    Please upload your slides to your designated slot below. The backend will
-    automatically merge them into the final session presentations.
-  </p>
-  <p style="margin-bottom: 1.5rem;">
-    <a href="/2026/ChipDay2026Template.pptx" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600;">Download Template (.pptx)</a>
-  </p>
-
-  <h3 style="margin-bottom: 0.75rem;">Example from 2025</h3>
-  <div style="margin-bottom: 2.5rem;">
-    <img src="/2026/example-2025.png" alt="Example: Chip Design &amp; Verification Using Open-Source Tools - DTU Chip Day 2025" style="max-width: 500px; width: 100%; border-radius: 0.75rem; border: 1px solid var(--border);">
-    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">Chip Design &amp; Verification Using Open-Source Tools &mdash; J. K. Jakobsen (IC Works) &amp; J. S. Andersen (SyoSil), Chip Day 2025</p>
+  <div class="template-columns">
+    <div class="template-left">
+      <p style="color: var(--text-dim); margin-bottom: 1rem;">
+        To create a unified look across the event, we ask all speakers to use our common presentation template.
+        This helps communicate a shared community identity for Danish chip design.
+      </p>
+      <p style="color: var(--text-dim); margin-bottom: 1rem;">
+        Please upload your slides to your designated slot below. The backend will
+        automatically merge them into the final session presentations.
+      </p>
+      <p>
+        <a href="/2026/ChipDay2026Template.pptx" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600;">Download Template (.pptx)</a>
+      </p>
+    </div>
+    <div class="template-right">
+      <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Example from 2025</h3>
+      <img src="/2026/example-2025.png" alt="Example slide from Chip Day 2025" style="max-width: 280px; width: 100%; border-radius: 0.5rem; border: 1px solid var(--border);">
+      <p style="color: var(--text-dim); font-size: 0.75rem; margin-top: 0.4rem;">J. K. Jakobsen (IC Works) &amp; J. S. Andersen (SyoSil)</p>
+    </div>
   </div>
 
   <hr class="divider" style="margin-bottom: 2.5rem;">
@@ -171,6 +172,23 @@ permalink: /2026/
 </section>
 
 <style>
+  .template-columns {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  .template-left {
+    flex: 1;
+  }
+  .template-right {
+    flex-shrink: 0;
+  }
+  @media (max-width: 600px) {
+    .template-columns {
+      flex-direction: column;
+    }
+  }
   .upload-slot {
     background: var(--bg-card);
     border: 1px solid var(--border);
