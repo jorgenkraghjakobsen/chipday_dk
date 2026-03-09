@@ -33,48 +33,22 @@ permalink: /2026/
 
   <hr class="divider" style="margin-bottom: 2.5rem;">
 
-  <h2>Quiz Questions</h2>
-  <p style="color: var(--text-dim); margin-bottom: 1rem;">
-    We will run a fun quiz during the networking breaks! Each presenter is asked to prepare
-    <strong>3 questions</strong> with <strong>4 answer options</strong> each, and mark the correct answer.
-    Please send your questions to <a href="mailto:martin@chipday.dk" style="color: var(--accent);">martin@chipday.dk</a>.
-  </p>
-  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-    Check off your name once you have submitted your quiz questions:
-  </p>
-  <div style="margin-bottom: 2.5rem;" id="quiz-checklist">
-    {% for person in [
-      {id: "q-dam",        name: "Brian Dam Pedersen"},
-      {id: "q-lynggaard",  name: "Per Lynggaard"},
-      {id: "q-schoeberl",  name: "Martin Schoeberl"},
-      {id: "q-moradi",     name: "Farshad Moradi"},
-      {id: "q-nour",       name: "Yasser Nour"},
-      {id: "q-dahl",       name: "Nicolai Dahl"},
-      {id: "q-marquart",   name: "Jimmi Marquart"},
-      {id: "q-smedegaard", name: "Michael Smedegaard"},
-      {id: "q-saerkjaer",  name: "Tobias Saerkjaer"},
-      {id: "q-lind",       name: "Rasmus Lind"}
-    ] %}
-    <label class="quiz-check" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; cursor: pointer;">
-      <input type="checkbox" id="{{ person.id }}" onchange="saveQuizCheck('{{ person.id }}', this.checked)">
-      <span>{{ person.name }}</span>
-    </label>
-    {% endfor %}
-  </div>
-
-  <hr class="divider" style="margin-bottom: 2.5rem;">
-
   <div id="uploads">
+
+  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+    Each presenter is also asked to prepare <strong>3 quiz questions</strong> with <strong>4 answer options</strong> each (mark the correct one).
+    Send them to <a href="mailto:martin@chipday.dk" style="color: var(--accent);">martin@chipday.dk</a> and tick the checkbox when done.
+  </p>
 
   <h2>Session 1: Chip Education in Denmark</h2>
   <p style="color: var(--text-dim); margin-bottom: 1rem;">13:00 &ndash; 14:00</p>
   <div style="margin-bottom: 2.5rem;">
     {% for slot in [
-      {id: "s1-intro",     title: "Welcome & Introduction",                    who: "Organizers"},
-      {id: "s1-dam",       title: "Keynote: The Importance of IC Development",  who: "Brian Dam Pedersen, GN"},
-      {id: "s1-lynggaard", title: "Analogue Courses",                           who: "Per Lynggaard, DTU Electro"},
-      {id: "s1-schoeberl", title: "First Student Tape-Out",   who: "Martin Schoeberl, DTU Compute"},
-      {id: "s1-moradi",    title: "Research and Chip Courses at SDU",           who: "Farshad Moradi, SDU Micro Electronics"}
+      {id: "s1-intro",     title: "Welcome & Introduction",                    who: "Organizers",                       quiz: false},
+      {id: "s1-dam",       title: "Keynote: The Importance of IC Development",  who: "Brian Dam Pedersen, GN",          quiz: true},
+      {id: "s1-lynggaard", title: "Analogue Courses",                           who: "Per Lynggaard, DTU Electro",      quiz: true},
+      {id: "s1-schoeberl", title: "First Student Tape-Out",                     who: "Martin Schoeberl, DTU Compute",   quiz: true},
+      {id: "s1-moradi",    title: "Research and Chip Courses at SDU",           who: "Farshad Moradi, SDU Micro Electronics", quiz: true}
     ] %}
     <div class="upload-slot" data-slot="{{ slot.id }}">
       <div class="slot-info">
@@ -91,6 +65,12 @@ permalink: /2026/
         </label>
         <button type="submit" class="upload-btn">Upload</button>
       </form>
+      {% if slot.quiz %}
+      <label class="quiz-check">
+        <input type="checkbox" id="q-{{ slot.id }}" onchange="saveQuizCheck('q-{{ slot.id }}', this.checked)">
+        <span>Quiz questions sent</span>
+      </label>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -99,9 +79,9 @@ permalink: /2026/
   <p style="color: var(--text-dim); margin-bottom: 1rem;">14:30 &ndash; 15:15</p>
   <div style="margin-bottom: 2.5rem;">
     {% for slot in [
-      {id: "s2-nour", title: "Lotus Microsystems",  who: "Yasser Nour, Lotus Microsystems"},
-      {id: "s2-dahl", title: "EDA Startup",          who: "Nicolai Dahl, IC-Optimize"},
-      {id: "s2-marquart", title: "DSP Audio Processing in FPGA for Jabra Product", who: "Jimmi Marquart, GN"}
+      {id: "s2-nour",    title: "Lotus Microsystems",                          who: "Yasser Nour, Lotus Microsystems", quiz: true},
+      {id: "s2-dahl",    title: "EDA Startup",                                 who: "Nicolai Dahl, IC-Optimize",       quiz: true},
+      {id: "s2-marquart", title: "DSP Audio Processing in FPGA for Jabra Product", who: "Jimmi Marquart, GN",          quiz: true}
     ] %}
     <div class="upload-slot" data-slot="{{ slot.id }}">
       <div class="slot-info">
@@ -118,6 +98,10 @@ permalink: /2026/
         </label>
         <button type="submit" class="upload-btn">Upload</button>
       </form>
+      <label class="quiz-check">
+        <input type="checkbox" id="q-{{ slot.id }}" onchange="saveQuizCheck('q-{{ slot.id }}', this.checked)">
+        <span>Quiz questions sent</span>
+      </label>
     </div>
     {% endfor %}
   </div>
@@ -126,9 +110,9 @@ permalink: /2026/
   <p style="color: var(--text-dim); margin-bottom: 1rem;">15:45 &ndash; 16:30</p>
   <div style="margin-bottom: 2.5rem;">
     {% for slot in [
-      {id: "s3-smedegaard", title: "Keynote: Opportunities for DK Chip Design", who: "Michael Smedegaard, Meta"},
-      {id: "s3-saerkjaer",  title: "Quantum Foundry",                            who: "Tobias Saerkjaer, Quantum Foundry"},
-      {id: "s3-lind",       title: "Ultra High Speed Communication",              who: "Rasmus Lind, NVIDIA"}
+      {id: "s3-smedegaard", title: "Keynote: Opportunities for DK Chip Design", who: "Michael Smedegaard, Meta",       quiz: true},
+      {id: "s3-saerkjaer",  title: "Quantum Foundry",                            who: "Tobias Saerkjaer, Quantum Foundry", quiz: true},
+      {id: "s3-lind",       title: "Ultra High Speed Communication",              who: "Rasmus Lind, NVIDIA",           quiz: true}
     ] %}
     <div class="upload-slot" data-slot="{{ slot.id }}">
       <div class="slot-info">
@@ -145,6 +129,10 @@ permalink: /2026/
         </label>
         <button type="submit" class="upload-btn">Upload</button>
       </form>
+      <label class="quiz-check">
+        <input type="checkbox" id="q-{{ slot.id }}" onchange="saveQuizCheck('q-{{ slot.id }}', this.checked)">
+        <span>Quiz questions sent</span>
+      </label>
     </div>
     {% endfor %}
   </div>
@@ -253,18 +241,22 @@ permalink: /2026/
     background: #3d7ae8;
   }
   .quiz-check {
-    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
     color: var(--text-dim);
+    cursor: pointer;
   }
   .quiz-check input[type="checkbox"] {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1rem;
+    height: 1rem;
     accent-color: var(--accent);
     cursor: pointer;
   }
   .quiz-check input[type="checkbox"]:checked + span {
     color: var(--green, #4caf50);
-    text-decoration: line-through;
   }
 </style>
 
