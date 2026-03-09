@@ -253,11 +253,10 @@ def logo_status():
     """Return JSON with logo upload status for all companies."""
     result = {}
     if LOGO_DIR.exists():
-        for d in LOGO_DIR.iterdir():
-            if d.is_dir():
-                files = [f for f in d.iterdir() if f.is_file()]
-                if files:
-                    result[d.name] = {"uploaded": True, "filename": files[0].name}
+        for f in LOGO_DIR.iterdir():
+            if f.is_file() and f.suffix.lower() in LOGO_EXTENSIONS:
+                slug = f.stem
+                result[slug] = {"uploaded": True, "filename": f.name}
     return jsonify(result)
 
 
@@ -274,14 +273,17 @@ def logo_upload(slug):
     if ext not in LOGO_EXTENSIONS:
         return f"File type {ext} not allowed. Use: {', '.join(LOGO_EXTENSIONS)}", 400
 
-    d = LOGO_DIR / slug
-    d.mkdir(parents=True, exist_ok=True)
-    for old in d.iterdir():
-        old.unlink()
+    LOGO_DIR.mkdir(parents=True, exist_ok=True)
 
-    safe_name = f.filename.replace("/", "_").replace("\\", "_")
-    f.save(d / safe_name)
-    log.info(f"Logo upload: {slug} <- {safe_name}")
+    # Remove any existing logo for this slug
+    for old in LOGO_DIR.iterdir():
+        if old.is_file() and old.stem == slug:
+            old.unlink()
+
+    # Save as slug + extension (e.g. ic-works.png)
+    dest = LOGO_DIR / f"{slug}{ext}"
+    f.save(dest)
+    log.info(f"Logo upload: {slug} <- {dest.name}")
 
     return redirect("/logos/")
 
