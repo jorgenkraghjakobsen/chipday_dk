@@ -304,17 +304,21 @@ permalink: /2026/
     })
     .catch(() => {});
 
-  // Quiz checkbox persistence (localStorage)
+  // Quiz checkbox persistence (server-side)
   function saveQuizCheck(id, checked) {
-    const data = JSON.parse(localStorage.getItem('quizChecks') || '{}');
-    data[id] = checked;
-    localStorage.setItem('quizChecks', JSON.stringify(data));
+    fetch('/2026/upload/quiz-status/' + id, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({checked: checked})
+    }).catch(() => {});
   }
-  (function loadQuizChecks() {
-    const data = JSON.parse(localStorage.getItem('quizChecks') || '{}');
-    for (const [id, checked] of Object.entries(data)) {
-      const el = document.getElementById(id);
-      if (el) el.checked = checked;
-    }
-  })();
+  fetch('/2026/upload/quiz-status')
+    .then(r => r.json())
+    .then(data => {
+      for (const [id, checked] of Object.entries(data)) {
+        const el = document.getElementById(id);
+        if (el) el.checked = checked;
+      }
+    })
+    .catch(() => {});
 </script>
