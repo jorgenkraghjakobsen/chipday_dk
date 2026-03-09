@@ -6,14 +6,12 @@ needsLeaflet: true
 
 {# Hero #}
 <div class="hero">
+    <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
     <div class="date-badge">{{ site.event_date_display | upper }} &middot; DTU LYNGBY</div>
     <h1>DTU <span>Chip</span>day {{ site.event_year }}</h1>
     <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
     <div class="cta-group">
-        <span class="cta-wip">
-            <span class="construction">&#128679;</span>Program
-            <span class="tooltip">{{ site.event_year }} program coming soon!</span>
-        </span>
+        <a class="cta cta-secondary" href="#program">Program</a>
         <a class="cta" href="https://www.conferencemanager.dk/dtuchipday14042026" target="_blank" rel="noopener">Register Now</a>
     </div>
     <div class="countdown" id="countdown">
@@ -24,18 +22,33 @@ needsLeaflet: true
     </div>
 </div>
 
-{# Program - show last year's as reference #}
-{% set lastEvent = archive | getByYear(2025) %}
+{# Program #}
 <section id="program">
-    <h2>Program <span class="program-wip">{{ site.event_year }} TBA</span></h2>
-    <p class="subtitle">The {{ site.event_year }} program is being finalized. Below is <strong>last year's program (2025)</strong> to give you an idea of what to expect.</p>
+    <h2>Program</h2>
+    <p class="subtitle">DTU Chip Day {{ site.event_year }} &mdash; {{ site.event_date_display }}</p>
 
-    {% for item in lastEvent.program %}
+    {% for item in program2026 %}
     {% include "partials/program-item.njk" %}
     {% endfor %}
 </section>
 
 <hr class="divider">
+
+{# Sponsors & Exhibitors #}
+{% set sponsors = companies | selectattr("sponsor") %}
+{% if sponsors | length %}
+<section id="sponsors">
+    <h2>Sponsors &amp; Exhibitors</h2>
+    <p class="subtitle">Companies with a stand at DTU Chipday {{ site.event_year }}</p>
+    <div class="sponsors-grid">
+        {% for c in sponsors %}
+        <a href="{{ c.url }}" target="_blank" rel="noopener" class="sponsor-badge">{{ c.name }}</a>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+{% endif %}
 
 {# About #}
 <section id="about">
