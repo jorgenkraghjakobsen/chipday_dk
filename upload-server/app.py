@@ -22,9 +22,11 @@ log = logging.getLogger("chipday-upload")
 
 UPLOAD_DIR = Path("/var/www/chipday.dk/2026/uploads")
 MERGED_DIR = Path("/var/www/chipday.dk/2026/merged")
+LOGO_DIR = Path("/var/www/chipday.dk/assets/logos")
 QUIZ_FILE = UPLOAD_DIR / "quiz-status.json"
 MAX_FILE_SIZE = 100 * 1024 * 1024  # 100 MB
 ALLOWED_EXTENSIONS = {".pptx", ".ppt", ".pdf", ".key"}
+LOGO_EXTENSIONS = {".png", ".svg", ".jpg", ".jpeg", ".webp"}
 
 # Relationship types to skip when cloning slides (already in destination)
 SKIP_RELTYPES = {RT.SLIDE_LAYOUT, RT.SLIDE_MASTER, RT.THEME}
@@ -244,6 +246,44 @@ def quiz_toggle(slot_id):
     data[slot_id] = bool(body.get("checked", False))
     save_quiz_status(data)
     return jsonify({"ok": True})
+
+
+@app.route("/logos/upload/status")
+def logo_status():
+    """Return JSON with logo upload status for all companies."""
+    result = {}
+    if LOGO_DIR.exists():
+        for d in LOGO_DIR.iterdir():
+            if d.is_dir():
+                files = [f for f in d.iterdir() if f.is_file()]
+                if files:
+                    result[d.name] = {"uploaded": True, "filename": files[0].name}
+    return jsonify(result)
+
+
+@app.route("/logos/upload/<slug>", methods=["POST"])
+def logo_upload(slug):
+    if "file" not in request.files:
+        return "No file provided", 400
+
+    f = request.files["file"]
+    if not f.filename:
+        return "No file selected", 400
+
+    ext = os.path.splitext(f.filename)[1].lower()
+    if ext not in LOGO_EXTENSIONS:
+        return f"File type {ext} not allowed. Use: {', '.join(LOGO_EXTENSIONS)}", 400
+
+    d = LOGO_DIR / slug
+    d.mkdir(parents=True, exist_ok=True)
+    for old in d.iterdir():
+        old.unlink()
+
+    safe_name = f.filename.replace("/", "_").replace("\\", "_")
+    f.save(d / safe_name)
+    log.info(f"Logo upload: {slug} <- {safe_name}")
+
+    return redirect("/logos/")
 
 
 if __name__ == "__main__":

@@ -436,6 +436,53 @@
             background: var(--bg-card-hover);
         }
 
+        .sponsors-logo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sponsor-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .sponsor-logo:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: scale(1.05);
+        }
+
+        .sponsor-logo img {
+            height: calc(3rem * var(--logo-scale, 1));
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            filter: brightness(0.9);
+            transition: filter 0.2s;
+        }
+
+        .sponsor-logo:hover img {
+            filter: brightness(1);
+        }
+
+        .sponsor-fallback {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         /* About */
         .about-grid {
             display: grid;

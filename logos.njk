@@ -1,0 +1,150 @@
+---
+layout: base.njk
+title: Chip Day 2026 - Logo Upload
+permalink: /logos/
+---
+
+<div class="page-header" style="position: relative; overflow: hidden;">
+  <img src="/assets/hero-wafer.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+  <div style="position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(15,17,23,0.6) 0%, rgba(15,17,23,0.8) 50%, var(--bg) 100%);"></div>
+  <h1 style="position: relative; z-index: 2;">Logo <span>Upload</span></h1>
+  <p style="position: relative; z-index: 2;">Upload your company logo for the Chip Day {{ site.event_year }} website</p>
+</div>
+
+<section style="max-width: 800px; margin: 0 auto;">
+  <h2>Instructions</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">
+    Please upload a high-quality version of your company logo. Preferred format is <strong>PNG with transparent background</strong>.
+    The logo will be displayed on the Chip Day homepage in the Sponsors &amp; Exhibitors section.
+  </p>
+  <ul style="color: var(--text-dim); margin-bottom: 2rem; padding-left: 1.2rem;">
+    <li style="margin-bottom: 0.3rem;">Format: PNG (transparent background preferred), SVG, or JPG</li>
+    <li style="margin-bottom: 0.3rem;">Minimum width: 400px</li>
+    <li style="margin-bottom: 0.3rem;">Light or white logo works best on dark backgrounds</li>
+  </ul>
+
+  <div id="logo-uploads">
+    {% for c in companies %}
+    <div class="upload-slot" data-slot="logo-{{ c.name | slug }}">
+      <div class="slot-info">
+        <strong>{{ c.name }}</strong>
+        {% if c.logo %}
+        <span style="color: var(--text-dim);"> &mdash; {{ c.logo }}</span>
+        {% endif %}
+      </div>
+      <div class="logo-preview" id="preview-{{ c.name | slug }}">
+        {% if c.logo %}
+        <img src="/assets/logos/{{ c.logo }}" alt="{{ c.name }} logo" style="height: 3rem; margin: 0.5rem 0;">
+        {% endif %}
+      </div>
+      <div class="slot-status" id="status-logo-{{ c.name | slug }}">
+        <span class="status-none">{% if c.logo %}Current: {{ c.logo }}{% else %}No logo uploaded{% endif %}</span>
+      </div>
+      <form action="/logos/upload/{{ c.name | slug }}" method="post" enctype="multipart/form-data" class="upload-form">
+        <label class="file-label">
+          <input type="file" name="file" accept=".png,.svg,.jpg,.jpeg,.webp" required>
+          <span class="file-btn">Choose file</span>
+        </label>
+        <button type="submit" class="upload-btn">Upload</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .upload-slot {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s;
+  }
+  .upload-slot:hover {
+    border-color: var(--accent-dim);
+  }
+  .slot-status {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+  .status-none { color: var(--text-dim); }
+  .status-uploaded { color: var(--green); font-weight: 600; }
+  .upload-form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .file-label {
+    position: relative;
+    cursor: pointer;
+  }
+  .file-label input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  .file-btn {
+    display: inline-block;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 0.4rem 1rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .file-btn:hover {
+    border-color: var(--accent-dim);
+    color: var(--text);
+  }
+  .file-label.has-file .file-btn {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .upload-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .upload-btn:hover { background: #3d7ae8; }
+</style>
+
+<script>
+  document.querySelectorAll('.file-label input[type="file"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const label = input.closest('.file-label');
+      const btn = label.querySelector('.file-btn');
+      if (input.files.length) {
+        btn.textContent = input.files[0].name;
+        label.classList.add('has-file');
+      } else {
+        btn.textContent = 'Choose file';
+        label.classList.remove('has-file');
+      }
+    });
+  });
+
+  // Fetch logo upload status
+  fetch('/logos/upload/status')
+    .then(r => r.json())
+    .then(data => {
+      for (const [slug, info] of Object.entries(data)) {
+        const el = document.getElementById('status-logo-' + slug);
+        if (!el) continue;
+        if (info.uploaded) {
+          el.innerHTML = '<span class="status-uploaded">Uploaded: ' + info.filename + '</span>';
+        }
+      }
+    })
+    .catch(() => {});
+</script>
