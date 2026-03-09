@@ -33,6 +33,37 @@ permalink: /2026/
 
   <hr class="divider" style="margin-bottom: 2.5rem;">
 
+  <h2>Quiz Questions</h2>
+  <p style="color: var(--text-dim); margin-bottom: 1rem;">
+    We will run a fun quiz during the networking breaks! Each presenter is asked to prepare
+    <strong>3 questions</strong> with <strong>4 answer options</strong> each, and mark the correct answer.
+    Please send your questions to <a href="mailto:martin@chipday.dk" style="color: var(--accent);">martin@chipday.dk</a>.
+  </p>
+  <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+    Check off your name once you have submitted your quiz questions:
+  </p>
+  <div style="margin-bottom: 2.5rem;" id="quiz-checklist">
+    {% for person in [
+      {id: "q-dam",        name: "Brian Dam Pedersen"},
+      {id: "q-lynggaard",  name: "Per Lynggaard"},
+      {id: "q-schoeberl",  name: "Martin Schoeberl"},
+      {id: "q-moradi",     name: "Farshad Moradi"},
+      {id: "q-nour",       name: "Yasser Nour"},
+      {id: "q-dahl",       name: "Nicolai Dahl"},
+      {id: "q-marquart",   name: "Jimmi Marquart"},
+      {id: "q-smedegaard", name: "Michael Smedegaard"},
+      {id: "q-saerkjaer",  name: "Tobias Saerkjaer"},
+      {id: "q-lind",       name: "Rasmus Lind"}
+    ] %}
+    <label class="quiz-check" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; cursor: pointer;">
+      <input type="checkbox" id="{{ person.id }}" onchange="saveQuizCheck('{{ person.id }}', this.checked)">
+      <span>{{ person.name }}</span>
+    </label>
+    {% endfor %}
+  </div>
+
+  <hr class="divider" style="margin-bottom: 2.5rem;">
+
   <div id="uploads">
 
   <h2>Session 1: Chip Education in Denmark</h2>
@@ -221,6 +252,20 @@ permalink: /2026/
   .upload-btn:hover {
     background: #3d7ae8;
   }
+  .quiz-check {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+  .quiz-check input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .quiz-check input[type="checkbox"]:checked + span {
+    color: var(--green, #4caf50);
+    text-decoration: line-through;
+  }
 </style>
 
 <script>
@@ -266,4 +311,18 @@ permalink: /2026/
       }
     })
     .catch(() => {});
+
+  // Quiz checkbox persistence (localStorage)
+  function saveQuizCheck(id, checked) {
+    const data = JSON.parse(localStorage.getItem('quizChecks') || '{}');
+    data[id] = checked;
+    localStorage.setItem('quizChecks', JSON.stringify(data));
+  }
+  (function loadQuizChecks() {
+    const data = JSON.parse(localStorage.getItem('quizChecks') || '{}');
+    for (const [id, checked] of Object.entries(data)) {
+      const el = document.getElementById(id);
+      if (el) el.checked = checked;
+    }
+  })();
 </script>
