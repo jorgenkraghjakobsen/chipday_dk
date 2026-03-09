@@ -22,18 +22,6 @@ needsLeaflet: true
     </div>
 </div>
 
-{# Program #}
-<section id="program">
-    <h2>Program</h2>
-    <p class="subtitle">DTU Chip Day {{ site.event_year }} &mdash; {{ site.event_date_display }}</p>
-
-    {% for item in program2026 %}
-    {% include "partials/program-item.njk" %}
-    {% endfor %}
-</section>
-
-<hr class="divider">
-
 {# Sponsors & Exhibitors #}
 {% set sponsors = companies | selectattr("sponsor") %}
 {% if sponsors | length %}
@@ -49,6 +37,18 @@ needsLeaflet: true
 
 <hr class="divider">
 {% endif %}
+
+{# Program #}
+<section id="program">
+    <h2>Program</h2>
+    <p class="subtitle">DTU Chip Day {{ site.event_year }} &mdash; {{ site.event_date_display }}</p>
+
+    {% for item in program2026 %}
+    {% include "partials/program-item.njk" %}
+    {% endfor %}
+</section>
+
+<hr class="divider">
 
 {# About #}
 <section id="about">
