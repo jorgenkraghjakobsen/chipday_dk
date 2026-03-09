@@ -2,75 +2,64 @@
   url: "https://comcores.com"
   contact_name: "Jorgen Carstensen"
   contact_email: "jca@comcores.com"
-  logo: "comcores.png"
   sponsor: false
 
 - name: "Synopsys"
   url: "https://synopsys.com"
   contact_name: "Martine Chegaray"
   contact_email: "martine@synopsys.com"
-  logo: "synopsys.png"
   sponsor: false
 
 - name: "SyoSil"
   url: "https://syosil.com"
   contact_name: "Peter Jensen"
   contact_email: "peter@syosil.com"
-  logo: "syosil.png"
   sponsor: false
 
 - name: "Siemens EDA"
   url: "https://eda.sw.siemens.com"
   contact_name: "Sarah Allan"
   contact_email: "sarah.allan@siemens.com"
-  logo: "siemens-eda.png"
   sponsor: false
 
 - name: "SonicEdge"
   url: "https://sonicedge.io"
   contact_name: "Tore Jorgensen"
   contact_email: "tore.joergensen@sonicedge.io"
-  logo: "sonicedge.png"
   sponsor: false
 
 - name: "Lotus Microsystems"
   url: "https://lotus-microsystems.com"
   contact_name: "Yasser Nour"
   contact_email: "ynour@lotus-microsystems.com"
-  logo: "lotus-microsystems.png"
   sponsor: false
 
 - name: "Kandou Bus Denmark"
   url: "https://kandou.com"
   contact_name: "Isac Jensen"
   contact_email: "jensen@kandou.com"
-  logo: "kandou.png"
   sponsor: false
 
 - name: "GN Hearing"
   url: "https://gnhearing.com"
   contact_name: "Karna Bullen"
   contact_email: "kbullen@gn.com"
-  logo: "gn-hearing.png"
   sponsor: true
 
 - name: "NVIDIA Danmark"
   url: "https://nvidia.com"
   contact_name: "Janni Sandlykke"
   contact_email: "jannis@nvidia.com"
-  logo: "nvidia.png"
   sponsor: false
 
 - name: "Hoiberg"
   url: "https://hoiberg.com"
   contact_name: "Ronan Mettetal"
   contact_email: "rml@hoiberg.com"
-  logo: "hoiberg.png"
   sponsor: false
 
 - name: "IC Works"
   url: "https://icworks.dk"
   contact_name: "Jorgen Kragh Jakobsen"
   contact_email: "jkj@icworks.dk"
-  logo: "ic-works.png"
   sponsor: true

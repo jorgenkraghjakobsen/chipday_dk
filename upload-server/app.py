@@ -248,6 +248,7 @@ def quiz_toggle(slot_id):
     return jsonify({"ok": True})
 
 
+@app.route("/api/logo-status")
 @app.route("/logos/upload/status")
 def logo_status():
     """Return JSON with logo upload status for all companies."""
