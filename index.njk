@@ -30,7 +30,7 @@ needsLeaflet: true
     <p class="subtitle">Companies with a stand at DTU Chipday {{ site.event_year }}</p>
     <div class="sponsors-logo-grid">
         {% for c in sponsors %}
-        <a href="{{ c.url }}" target="_blank" rel="noopener" class="sponsor-logo" title="{{ c.name }}" data-slug="{{ c.name | slugify }}"{% if c.scale %} style="--logo-scale: {{ c.scale }}"{% endif %}>
+        <a href="{{ c.url }}" target="_blank" rel="noopener" class="sponsor-logo" title="{{ c.name }}" data-slug="{{ c.name | slugify }}" style="{% if c.scale %}--logo-scale: {{ c.scale }};{% endif %}{% if c.logo_bg %}--logo-bg: {{ c.logo_bg }}{% endif %}">
             <span class="sponsor-fallback">{{ c.name }}</span>
         </a>
         {% endfor %}

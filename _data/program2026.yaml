@@ -5,15 +5,16 @@
 
 - time: "13:00"
   title: "Welcome"
-  type: "break"
-  description: "Opening remarks (5 min)"
+  type: "keynote"
+  speaker: "Michael da Costa Carneiro"
+  affiliation: "GN, Digital IC Group Manager"
 
 - time: "13:05"
   title: "Keynote: The Importance of IC Development"
   type: "keynote"
   speaker: "Brian Dam Pedersen"
   affiliation: "GN, CTO"
-  description: "The importance of IC development in general and what it has meant to the hearing aid business in Denmark (15 min)"
+  description: "The importance of IC development in general and what it has meant to the hearing aid business in Denmark"
 
 - time: "13:20"
   title: "Chip Education in Denmark"
@@ -57,7 +58,7 @@
   type: "keynote"
   speaker: "Michael Smedegaard"
   affiliation: "Meta, Chief Audio HW Architect"
-  description: "Opportunities for DK chip design (15 min)"
+  description: "Opportunities for DK chip design"
 
 - time: "16:00"
   title: "Technical Presentations II"

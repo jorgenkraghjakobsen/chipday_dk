@@ -8,7 +8,7 @@
   url: "https://synopsys.com"
   contact_name: "Martine Chegaray"
   contact_email: "martine@synopsys.com"
-  sponsor: false
+  sponsor: true
 
 - name: "SyoSil"
   url: "https://syosil.com"
@@ -20,19 +20,19 @@
   url: "https://eda.sw.siemens.com"
   contact_name: "Sarah Allan"
   contact_email: "sarah.allan@siemens.com"
-  sponsor: false
+  sponsor: true
 
 - name: "SonicEdge"
   url: "https://sonicedge.io"
   contact_name: "Tore Jorgensen"
   contact_email: "tore.joergensen@sonicedge.io"
-  sponsor: false
+  sponsor: true
 
 - name: "Lotus Microsystems"
   url: "https://lotus-microsystems.com"
   contact_name: "Yasser Nour"
   contact_email: "ynour@lotus-microsystems.com"
-  sponsor: false
+  sponsor: true
 
 - name: "Kandou Bus Denmark"
   url: "https://kandou.com"
@@ -50,7 +50,8 @@
   url: "https://nvidia.com"
   contact_name: "Janni Sandlykke"
   contact_email: "jannis@nvidia.com"
-  sponsor: false
+  sponsor: true
+  logo_bg: white
 
 - name: "Hoiberg"
   url: "https://hoiberg.com"
@@ -62,4 +63,17 @@
   url: "https://icworks.dk"
   contact_name: "Jorgen Kragh Jakobsen"
   contact_email: "jkj@icworks.dk"
+  sponsor: true
+
+- name: "Presto Engineering"
+  url: "https://presto-eng.com"
+  sponsor: true
+  logo_bg: white
+
+- name: "4ASICS"
+  url: "https://www.4asics.com"
+  sponsor: true
+
+- name: "Quantum Foundry Copenhagen"
+  url: "https://qfcph.com"
   sponsor: true

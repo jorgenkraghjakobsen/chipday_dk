@@ -471,6 +471,12 @@
             object-fit: contain;
             filter: brightness(0.9);
             transition: filter 0.2s;
+            background: var(--logo-bg, transparent);
+            border-radius: 4px;
+        }
+
+        .sponsor-logo[style*="--logo-bg"] img {
+            padding: 0.3rem 0.5rem;
         }
 
         .sponsor-logo:hover img {
