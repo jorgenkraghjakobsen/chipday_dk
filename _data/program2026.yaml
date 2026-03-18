@@ -44,10 +44,10 @@
       affiliation: "Lotus Microsystems, CTO & Co-Founder"
     - title: "EDA Startup"
       speaker: "Nicolai Dahl"
-      affiliation: "IC-Optimize"
+      affiliation: "IC-Optimize, CTO & Founder"
     - title: "DSP Audio Processing in FPGA for Jabra Product"
       speaker: "Jimmi Marquart"
-      affiliation: "GN"
+      affiliation: "GN, Digital Hardware Designer"
 
 - time: "15:15"
   title: "Networking Break"
@@ -69,7 +69,7 @@
       affiliation: "Quantum Foundry, Chip Design Engineer"
     - title: "Ultra High Speed Communication"
       speaker: "Rasmus Lind"
-      affiliation: "NVIDIA"
+      affiliation: "NVIDIA, Analog IC Designer"
 
 - time: "16:30"
   title: "Quiz & Prizes, Networking & Drinks"
