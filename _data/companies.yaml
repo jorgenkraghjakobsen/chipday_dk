@@ -14,7 +14,8 @@
   url: "https://syosil.com"
   contact_name: "Peter Jensen"
   contact_email: "peter@syosil.com"
-  sponsor: false
+  sponsor: true
+  logo_bg: white
 
 - name: "Siemens EDA"
   url: "https://eda.sw.siemens.com"
@@ -66,7 +67,7 @@
   sponsor: true
 
 - name: "Presto Engineering"
-  url: "https://presto-eng.com"
+  url: "https://www.presto-eng.com"
   sponsor: true
   logo_bg: white
 
@@ -76,4 +77,37 @@
 
 - name: "Quantum Foundry Copenhagen"
   url: "https://qfcph.com"
+  sponsor: true
+
+- name: "IC-Optimize"
+  url: "https://ic-optimize.com"
+  sponsor: true
+
+- name: "Quantum Machines"
+  url: "https://www.quantum-machines.co"
+  sponsor: true
+
+- name: "Diasense"
+  url: "https://diasense.dk"
+  sponsor: true
+
+- name: "Silicom Denmark"
+  url: "https://silicom.dk"
+  sponsor: true
+
+- name: "Demant"
+  url: "https://www.demant.com"
+  sponsor: true
+
+- name: "Phanofi"
+  url: "https://www.phanofi.com"
+  sponsor: true
+  logo_bg: white
+
+- name: "Napatech"
+  url: "https://www.napatech.com"
+  sponsor: true
+
+- name: "WSA"
+  url: "https://www.wsa.com"
   sponsor: true

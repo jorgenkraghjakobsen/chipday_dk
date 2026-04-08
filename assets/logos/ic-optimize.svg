@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80">
+  <g transform="translate(40,40)">
+    <!-- Outer cyan circle -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#00BFFF" stroke-width="5"/>
+    <!-- Orange arc (partial circle, upper-right) -->
+    <path d="M -16,0 A 16,16 0 1,1 16,0" fill="none" stroke="#FF8C00" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- Inner cyan circle -->
+    <circle cx="0" cy="0" r="8" fill="none" stroke="#00BFFF" stroke-width="3"/>
+    <!-- Orange center dot -->
+    <circle cx="0" cy="0" r="2.5" fill="#FF8C00"/>
+    <!-- Small cyan dot (lower-left of inner ring) -->
+    <circle cx="-11" cy="8" r="2" fill="#00BFFF"/>
+    <!-- Small orange dot -->
+    <circle cx="-6" cy="12" r="1.5" fill="#FF8C00"/>
+  </g>
+  <text x="80" y="48" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="32" fill="white" letter-spacing="2">IC OPTIMIZE</text>
+</svg>
