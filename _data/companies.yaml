@@ -111,3 +111,4 @@
 - name: "WSA"
   url: "https://www.wsa.com"
   sponsor: true
+  logo_bg: "#4A3F7F"
