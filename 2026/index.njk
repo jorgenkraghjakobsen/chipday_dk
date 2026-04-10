@@ -80,7 +80,7 @@ permalink: /2026/
   <p style="color: var(--text-dim); margin-bottom: 1rem;">14:30 &ndash; 15:15</p>
   <div style="margin-bottom: 2.5rem;">
     {% for slot in [
-      {id: "s2-nour",    title: "Lotus Microsystems",                          who: "Yasser Nour, Lotus Microsystems", quiz: true},
+      {id: "s2-nour",    title: "Lotus Microsystems",                          who: "Martin Lantz, Lotus Microsystems", quiz: true},
       {id: "s2-dahl",    title: "EDA Startup",                                 who: "Nicolai Dahl, IC-Optimize",       quiz: true},
       {id: "s2-marquart", title: "DSP Audio Processing in FPGA for Jabra Product", who: "Jimmi Marquart, GN",          quiz: true}
     ] %}
@@ -304,7 +304,7 @@ permalink: /2026/
           const el = document.getElementById('status-' + slotId);
           if (!el) continue;
           if (info.uploaded) {
-            el.innerHTML = '<span class="status-uploaded">Uploaded: ' + info.filename + '</span>';
+            el.innerHTML = '<span class="status-uploaded">Uploaded: <a href="/2026/uploads/' + slotId + '/' + encodeURIComponent(info.filename) + '" style="color: var(--green); text-decoration: underline;" download>' + info.filename + '</a></span>';
           }
         }
       }

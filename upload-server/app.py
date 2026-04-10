@@ -38,11 +38,11 @@ SESSIONS = {
     },
     "session-2": {
         "name": "Technical Presentations I",
-        "slots": ["s2-nour", "s2-dahl", "s2-tba"],
+        "slots": ["s2-nour", "s2-dahl", "s2-marquart"],
     },
     "session-3": {
         "name": "Technical Presentations II",
-        "slots": ["s3-smedegaard", "s3-saerkjaer", "s3-tba"],
+        "slots": ["s3-smedegaard", "s3-saerkjaer", "s3-lind"],
     },
 }
 
@@ -56,11 +56,11 @@ SLOTS = {
     # Session 2: Technical Presentations I
     "s2-nour":        "Lotus Microsystems",
     "s2-dahl":        "EDA Startup",
-    "s2-tba":         "TBA",
+    "s2-marquart":    "DSP Audio Processing in FPGA for Jabra Product",
     # Session 3: Technical Presentations II
     "s3-smedegaard":  "Keynote: Opportunities for DK Chip Design",
     "s3-saerkjaer":   "Quantum Foundry",
-    "s3-tba":         "TBA",
+    "s3-lind":        "Ultra High Speed Communication",
 }
 
 

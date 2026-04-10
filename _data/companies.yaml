@@ -112,3 +112,8 @@
   url: "https://www.wsa.com"
   sponsor: true
   logo_bg: "#4A3F7F"
+
+- name: "Cenexum Technologies"
+  url: "https://cenexum.com"
+  sponsor: true
+  logo_bg: white

@@ -40,8 +40,8 @@
   type: "session"
   talks:
     - title: "Lotus Microsystems"
-      speaker: "Yasser Nour"
-      affiliation: "Lotus Microsystems, CTO & Co-Founder"
+      speaker: "Martin Lantz"
+      affiliation: "Lotus Microsystems, IC Design Manager"
     - title: "EDA Startup"
       speaker: "Nicolai Dahl"
       affiliation: "IC-Optimize, CTO & Founder"
