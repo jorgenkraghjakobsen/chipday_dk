@@ -34,7 +34,7 @@ SKIP_RELTYPES = {RT.SLIDE_LAYOUT, RT.SLIDE_MASTER, RT.THEME}
 SESSIONS = {
     "session-1": {
         "name": "Chip Education in Denmark",
-        "slots": ["s1-intro", "s1-dam", "s1-lynggaard", "s1-schoeberl", "s1-moradi"],
+        "slots": ["s1-intro", "s1-dam", "s1-lynggaard", "s1-schoeberl", "s1-moradi", "s1-rolver"],
     },
     "session-2": {
         "name": "Technical Presentations I",
@@ -53,6 +53,7 @@ SLOTS = {
     "s1-lynggaard":   "Analogue Courses",
     "s1-schoeberl":   "Digital Courses + First Student Tape-Out",
     "s1-moradi":      "Research and Chip Courses at SDU",
+    "s1-rolver":      "The Industry Master at DTU",
     # Session 2: Technical Presentations I
     "s2-nour":        "Lotus Microsystems",
     "s2-dahl":        "EDA Startup",

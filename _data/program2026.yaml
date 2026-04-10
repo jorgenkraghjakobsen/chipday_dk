@@ -30,6 +30,10 @@
     - title: "Research and Chip Courses at SDU"
       speaker: "Farshad Moradi"
       affiliation: "SDU Micro Electronics, Prof."
+    - title: "The Industry Master at DTU – How to Attract Talent Early and Shape Future Engineers"
+      speaker: "Katrine Schwab Rolver"
+      affiliation: "DTU, Project Coordinator"
+      lightning: true
 
 - time: "14:00"
   title: "Networking Break"

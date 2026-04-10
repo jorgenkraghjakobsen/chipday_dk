@@ -11,7 +11,7 @@
         {% if item.talks %}
         <ul class="talks">
             {% for talk in item.talks %}
-            <li><strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}</li>
+            <li>{% if talk.lightning %}<span class="lightning-badge">Lightning talk</span> {% endif %}<strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}</li>
             {% endfor %}
         </ul>
         {% endif %}
