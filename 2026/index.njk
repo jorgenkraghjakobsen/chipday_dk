@@ -143,9 +143,54 @@ permalink: /2026/
 
   <hr class="divider" style="margin-bottom: 2.5rem;">
 
-  <h2>Merged Session Decks</h2>
+  <h2>All Presentations (Organized)</h2>
   <p style="color: var(--text-dim); margin-bottom: 1rem;">
+    Original .pptx files, named and ordered by session. Hit rebuild after new uploads, then download the zip or individual files.
+  </p>
+  <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+    <a href="/2026/presentations.zip" style="display: inline-block; background: var(--accent); color: #fff; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600;">Download All (.zip)</a>
+    <button id="rebuild-btn" onclick="rebuildPresentations()" style="background: #e67e22; color: #fff; border: none; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Rebuild</button>
+    <span id="rebuild-status" style="color: var(--text-dim); font-size: 0.85rem;"></span>
+  </div>
+
+  <details style="margin-bottom: 1rem;">
+    <summary style="cursor: pointer; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;">Session 1: Chip Education in Denmark</summary>
+    <ul style="color: var(--text-dim); padding-left: 1.2rem; margin-top: 0.5rem;">
+      <li><a href="/2026/presentations/session-1_education/s1-00-Introduction.pptx" style="color: var(--text);">s1-00 Introduction</a></li>
+      <li><a href="/2026/presentations/session-1_education/s1-01-Brian_Dam_Pedersen-Keynote_IC_Development.pptx" style="color: var(--text);">s1-01 Brian Dam Pedersen — Keynote</a></li>
+      <li><a href="/2026/presentations/session-1_education/s1-02-Per_Lynggaard-Analogue_Courses.pptx" style="color: var(--text);">s1-02 Per Lynggaard — Analogue Courses</a></li>
+      <li><a href="/2026/presentations/session-1_education/s1-03-Martin_Schoeberl-First_Student_Tape_Out.pptx" style="color: var(--text);">s1-03 Martin Schoeberl — First Student Tape-Out</a></li>
+      <li style="color: var(--text-dim);">s1-04 Farshad Moradi — <em>not yet uploaded</em></li>
+      <li><a href="/2026/presentations/session-1_education/s1-05-Katrine_Rolver-Industry_Master_DTU.pptx" style="color: var(--text);">s1-05 Katrine Rolver — Industry Master DTU</a></li>
+    </ul>
+  </details>
+
+  <details style="margin-bottom: 1rem;">
+    <summary style="cursor: pointer; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;">Session 2: Technical Presentations I</summary>
+    <ul style="color: var(--text-dim); padding-left: 1.2rem; margin-top: 0.5rem;">
+      <li><a href="/2026/presentations/session-2_technical_I/s2-01-Martin_Lantz-Lotus_Microsystems.pptx" style="color: var(--text);">s2-01 Martin Lantz — Lotus Microsystems</a></li>
+      <li><a href="/2026/presentations/session-2_technical_I/s2-02-Nicolai_Dahl-IC_Optimize_EDA.pptx" style="color: var(--text);">s2-02 Nicolai Dahl — IC Optimize EDA</a></li>
+      <li><a href="/2026/presentations/session-2_technical_I/s2-03-Jimmi_Marquart-DSP_Audio_FPGA.pptx" style="color: var(--text);">s2-03 Jimmi Marquart — DSP Audio FPGA</a></li>
+    </ul>
+  </details>
+
+  <details style="margin-bottom: 1rem;">
+    <summary style="cursor: pointer; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;">Session 3: Technical Presentations II</summary>
+    <ul style="color: var(--text-dim); padding-left: 1.2rem; margin-top: 0.5rem;">
+      <li style="color: var(--text-dim);">s3-01 Michael Smedegaard — <em>not yet uploaded</em></li>
+      <li><a href="/2026/presentations/session-3_technical_II/s3-02-Tobias_Saerkjaer-Quantum_Foundry.pptx" style="color: var(--text);">s3-02 Tobias Saerkjaer — Quantum Foundry</a></li>
+      <li><a href="/2026/presentations/session-3_technical_II/s3-03-Rasmus_Lind-Ultra_High_Speed_Comms.pptx" style="color: var(--text);">s3-03 Rasmus Lind — Ultra High Speed Comms</a></li>
+    </ul>
+  </details>
+
+  <hr class="divider" style="margin-bottom: 2.5rem;">
+
+  <h2>Merged Session Decks</h2>
+  <p style="color: var(--text-dim); margin-bottom: 0.5rem;">
     These are auto-generated after each upload. Download the latest merged deck for each session.
+  </p>
+  <p style="color: #e74c3c; margin-bottom: 1rem; font-weight: 600;">
+    Note: The merge function does not preserve all formatting and media reliably. Use the individual .pptx files above instead.
   </p>
   <div style="margin-bottom: 2.5rem;" id="merged-decks">
     <div class="upload-slot" id="merged-session-1">
@@ -161,13 +206,6 @@ permalink: /2026/
       <span class="merged-status" style="color: var(--text-dim); margin-left: 0.5rem;">Waiting for uploads...</span>
     </div>
   </div>
-
-  <hr class="divider" style="margin-bottom: 2.5rem;">
-
-  <h2>Practical Information</h2>
-  <ul style="color: var(--text-dim); margin-bottom: 2.5rem; padding-left: 1.2rem;">
-    <li style="margin-bottom: 0.5rem;">Coming soon</li>
-  </ul>
 </section>
 
 <style>
@@ -340,4 +378,32 @@ permalink: /2026/
       }
     })
     .catch(() => {});
+
+  // Rebuild presentations folder
+  function rebuildPresentations() {
+    const btn = document.getElementById('rebuild-btn');
+    const status = document.getElementById('rebuild-status');
+    btn.disabled = true;
+    btn.textContent = 'Rebuilding...';
+    status.textContent = '';
+    fetch('/2026/upload/rebuild-presentations', { method: 'POST' })
+      .then(r => r.json())
+      .then(data => {
+        if (data.ok) {
+          status.style.color = 'var(--green, #4caf50)';
+          status.textContent = 'Done — ' + data.files + ' files rebuilt';
+        } else {
+          status.style.color = '#e74c3c';
+          status.textContent = 'Error: ' + (data.error || 'unknown');
+        }
+      })
+      .catch(err => {
+        status.style.color = '#e74c3c';
+        status.textContent = 'Failed: ' + err.message;
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.textContent = 'Rebuild';
+      });
+  }
 </script>

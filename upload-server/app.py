@@ -22,6 +22,7 @@ log = logging.getLogger("chipday-upload")
 
 UPLOAD_DIR = Path("/var/www/chipday.dk/2026/uploads")
 MERGED_DIR = Path("/var/www/chipday.dk/2026/merged")
+PRES_DIR = Path("/var/www/chipday.dk/2026/presentations")
 LOGO_DIR = Path("/var/www/chipday.dk/assets/logos")
 QUIZ_FILE = UPLOAD_DIR / "quiz-status.json"
 MAX_FILE_SIZE = 100 * 1024 * 1024  # 100 MB
@@ -288,6 +289,74 @@ def logo_upload(slug):
     log.info(f"Logo upload: {slug} <- {dest.name}")
 
     return redirect("/logos/")
+
+
+# Mapping from slot id to clean filename for the presentations folder
+PRES_NAMES = {
+    "s1-intro":      "session-1_education/s1-00-Introduction",
+    "s1-dam":        "session-1_education/s1-01-Brian_Dam_Pedersen-Keynote_IC_Development",
+    "s1-lynggaard":  "session-1_education/s1-02-Per_Lynggaard-Analogue_Courses",
+    "s1-schoeberl":  "session-1_education/s1-03-Martin_Schoeberl-First_Student_Tape_Out",
+    "s1-moradi":     "session-1_education/s1-04-Farshad_Moradi-Chip_Courses_SDU",
+    "s1-rolver":     "session-1_education/s1-05-Katrine_Rolver-Industry_Master_DTU",
+    "s2-nour":       "session-2_technical_I/s2-01-Martin_Lantz-Lotus_Microsystems",
+    "s2-dahl":       "session-2_technical_I/s2-02-Nicolai_Dahl-IC_Optimize_EDA",
+    "s2-marquart":   "session-2_technical_I/s2-03-Jimmi_Marquart-DSP_Audio_FPGA",
+    "s3-smedegaard": "session-3_technical_II/s3-01-Michael_Smedegaard-Opportunities_DK_Chip",
+    "s3-saerkjaer":  "session-3_technical_II/s3-02-Tobias_Saerkjaer-Quantum_Foundry",
+    "s3-lind":       "session-3_technical_II/s3-03-Rasmus_Lind-Ultra_High_Speed_Comms",
+}
+
+PRES_SUBDIRS = [
+    "session-1_education",
+    "session-2_technical_I",
+    "session-3_technical_II",
+]
+
+
+def rebuild_presentations():
+    """Rebuild the organized presentations folder and zip from uploads."""
+    import shutil
+    import zipfile
+
+    # Clear and recreate
+    if PRES_DIR.exists():
+        shutil.rmtree(PRES_DIR)
+    for subdir in PRES_SUBDIRS:
+        (PRES_DIR / subdir).mkdir(parents=True, exist_ok=True)
+
+    copied = []
+    for slot_id, dest_path in PRES_NAMES.items():
+        src = get_current_file(slot_id)
+        if not src:
+            continue
+        ext = src.suffix
+        dst = PRES_DIR / f"{dest_path}{ext}"
+        shutil.copy2(str(src), str(dst))
+        copied.append(dst.name)
+
+    # Build zip
+    zip_path = PRES_DIR.parent / "presentations.zip"
+    with zipfile.ZipFile(str(zip_path), "w", zipfile.ZIP_DEFLATED) as zf:
+        for root, dirs, files in os.walk(str(PRES_DIR)):
+            for fname in sorted(files):
+                fpath = Path(root) / fname
+                arcname = f"presentations/{fpath.relative_to(PRES_DIR)}"
+                zf.write(str(fpath), arcname)
+
+    log.info(f"Rebuilt presentations: {len(copied)} files, zip={zip_path}")
+    return copied
+
+
+@app.route("/2026/upload/rebuild-presentations", methods=["POST"])
+def rebuild_presentations_endpoint():
+    """Rebuild the organized presentations folder from current uploads."""
+    try:
+        copied = rebuild_presentations()
+        return jsonify({"ok": True, "files": len(copied), "names": copied})
+    except Exception as e:
+        log.exception("Rebuild failed")
+        return jsonify({"ok": False, "error": str(e)}), 500
 
 
 if __name__ == "__main__":

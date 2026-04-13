@@ -64,6 +64,18 @@ server {
         try_files $uri $uri/ =404;
     }
 
+    # Public access for presentations (needed by MS Office Online viewer)
+    location /2026/presentations/ {
+        auth_basic off;
+        add_header Access-Control-Allow-Origin *;
+        try_files $uri $uri/ =404;
+    }
+
+    location /2026/presentations.zip {
+        auth_basic off;
+        try_files $uri =404;
+    }
+
     location /2026/ {
         auth_basic "Chip Day 2026 - Speaker Area";
         auth_basic_user_file /etc/nginx/chipday.htpasswd;

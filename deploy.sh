@@ -23,7 +23,7 @@ npx @11ty/eleventy
 
 echo ""
 echo "Deploying chipday.dk to ${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}"
-rsync -avz --delete --exclude='2026/uploads/' --exclude='2026/merged/' --exclude='assets/logos/*.png' --exclude='assets/logos/*.svg' --exclude='assets/logos/*.jpg' --exclude='assets/logos/*.jpeg' --exclude='assets/logos/*.webp' --rsync-path="sudo rsync" --chown=www-data:www-data ${DRY_RUN} "${SITE_DIR}/_site/" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/"
+rsync -avz --delete --exclude='2026/uploads/' --exclude='2026/merged/' --exclude='2026/presentations/' --exclude='2026/presentations.zip' --exclude='assets/logos/*.png' --exclude='assets/logos/*.svg' --exclude='assets/logos/*.jpg' --exclude='assets/logos/*.jpeg' --exclude='assets/logos/*.webp' --rsync-path="sudo rsync" --chown=www-data:www-data ${DRY_RUN} "${SITE_DIR}/_site/" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_PATH}/"
 
 echo ""
 echo "Deploying htpasswd and nginx config..."
