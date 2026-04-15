@@ -4,6 +4,9 @@ module.exports = function (eleventyConfig) {
   // Parse YAML data files
   eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
 
+  // Zero-pad numbers: {{ 5 | pad(2) }} → "05"
+  eleventyConfig.addFilter("pad", (num, size) => String(num).padStart(size, "0"));
+
   // Passthrough copy for static assets
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("2026/**/*.pptx");

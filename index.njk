@@ -10,17 +10,32 @@ needsLeaflet: true
     <div class="date-badge">{{ site.event_date_display | upper }} &middot; DTU LYNGBY</div>
     <h1>DTU <span>Chip</span>day {{ site.event_year }}</h1>
     <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
-    <div class="cta-group">
-        <a class="cta cta-secondary" href="#program">Program</a>
-        <a class="cta" href="https://www.conferencemanager.dk/dtuchipday14042026" target="_blank" rel="noopener">Register Now</a>
-    </div>
-    <div class="countdown" id="countdown">
-        <div class="unit"><span class="num" id="cd-days">--</span><span class="label">Days</span></div>
-        <div class="unit"><span class="num" id="cd-hours">--</span><span class="label">Hours</span></div>
-        <div class="unit"><span class="num" id="cd-mins">--</span><span class="label">Minutes</span></div>
-        <div class="unit"><span class="num" id="cd-secs">--</span><span class="label">Seconds</span></div>
-    </div>
 </div>
+
+{# Photo Gallery #}
+<section id="photos">
+    <h2>Chip Day 2026 in Pictures</h2>
+    <p class="subtitle">Photos by Hanne Klokkegaard</p>
+    <div class="carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous">&lsaquo;</button>
+        <div class="carousel-track">
+            {% for i in range(1, 68) %}
+            <img src="/assets/photos/2026/DTUChipDay2026_{{ i | pad(2) }}.jpg"
+                 alt="Chip Day 2026 photo {{ i }}"
+                 loading="lazy"
+                 class="carousel-slide{% if i == 1 %} active{% endif %}">
+            {% endfor %}
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next">&rsaquo;</button>
+    </div>
+    <div class="carousel-dots">
+        {% for i in range(1, 68) %}
+        <span class="carousel-dot{% if i == 1 %} active{% endif %}" data-index="{{ loop.index0 }}"></span>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
 
 {# Sponsors & Exhibitors #}
 {% set sponsors = companies | selectattr("sponsor") %}

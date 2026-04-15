@@ -6,7 +6,7 @@
 
 set -euo pipefail
 
-REMOTE_HOST="192.168.1.31"
+REMOTE_HOST="87.104.43.154"
 REMOTE_PATH="/var/www/chipday.dk"
 REMOTE_USER="jakobsen"
 SITE_DIR="$(dirname "$0")"

@@ -25,7 +25,7 @@ MERGED_DIR = Path("/var/www/chipday.dk/2026/merged")
 PRES_DIR = Path("/var/www/chipday.dk/2026/presentations")
 LOGO_DIR = Path("/var/www/chipday.dk/assets/logos")
 QUIZ_FILE = UPLOAD_DIR / "quiz-status.json"
-MAX_FILE_SIZE = 100 * 1024 * 1024  # 100 MB
+MAX_FILE_SIZE = 200 * 1024 * 1024  # 200 MB
 ALLOWED_EXTENSIONS = {".pptx", ".ppt", ".pdf", ".key"}
 LOGO_EXTENSIONS = {".png", ".svg", ".jpg", ".jpeg", ".webp"}
 
