@@ -24,9 +24,11 @@
     - title: "Analogue Courses"
       speaker: "Per Lynggaard"
       affiliation: "DTU Electro, Prof."
+      slides_public: true
     - title: "First Student Tape-Out"
       speaker: "Martin Schoeberl"
       affiliation: "DTU Compute, Prof."
+      slides_public: true
     - title: "Research and Chip Courses at SDU"
       speaker: "Farshad Moradi"
       affiliation: "SDU Micro Electronics, Prof."
@@ -49,6 +51,7 @@
     - title: "EDA Startup"
       speaker: "Nicolai Dahl"
       affiliation: "IC-Optimize, CTO & Founder"
+      slides_public: true
     - title: "DSP Audio Processing in FPGA for Jabra Product"
       speaker: "Jimmi Marquart"
       affiliation: "GN, Digital Hardware Designer"
