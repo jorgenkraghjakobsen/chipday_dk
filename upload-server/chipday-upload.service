@@ -1,0 +1,17 @@
+[Unit]
+Description=Chip Day 2026 slide upload server
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/chipday-upload
+ExecStart=/opt/chipday-upload/venv/bin/python -m flask run --host=127.0.0.1 --port=5026
+Environment=FLASK_APP=app.py
+Environment=MAX_CONTENT_LENGTH=104857600
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

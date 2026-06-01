@@ -8,10 +8,18 @@
         {% if item.description %}
         <p class="speaker">{{ item.description }}</p>
         {% endif %}
+        {% if item.type == "keynote" and item.slides_public === true and item.slides_file %}
+        <p style="margin-top: 0.4rem;"><a href="/archive/2026_dtu/presentations/{{ item.slides_file }}" class="slide-link">Download slides (PDF) &rarr;</a></p>
+        {% endif %}
         {% if item.talks %}
         <ul class="talks">
             {% for talk in item.talks %}
-            <li>{% if talk.lightning %}<span class="lightning-badge">Lightning talk</span> {% endif %}<strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}</li>
+            <li>
+                {% if talk.lightning %}<span class="lightning-badge">Lightning talk</span> {% endif %}<strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}
+                {% if talk.slides_public === true and talk.slides_file %}
+                &middot; <a href="/archive/2026_dtu/presentations/{{ talk.slides_file }}" class="slide-link">slides (PDF)</a>
+                {% endif %}
+            </li>
             {% endfor %}
         </ul>
         {% endif %}

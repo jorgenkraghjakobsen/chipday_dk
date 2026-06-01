@@ -1,0 +1,105 @@
+---
+layout: base.njk
+pageTitle: "DTU Chip Day 2026 - Archive"
+permalink: /archive/2026_dtu/
+---
+
+{# Hero #}
+<div class="hero">
+    <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
+    <div class="date-badge">22 APRIL 2026 &middot; DTU LYNGBY</div>
+    <h1>DTU <span>Chip</span>day 2026</h1>
+    <p>A half-day conference on the Danish chip design ecosystem &mdash; 12 talks across three sessions on chip education, technical industry work, and research outlooks. This page archives the program, photos, and presentations from the day.</p>
+    <p style="margin-top: 1rem;"><a href="/#archive" class="back-link">&larr; Back to all events</a></p>
+</div>
+
+{# Photo Gallery #}
+<section id="photos">
+    <h2>Chip Day 2026 in Pictures</h2>
+    <p class="subtitle">Photos by Hanne Klokkegaard</p>
+    <div class="carousel">
+        <button class="carousel-btn carousel-prev" aria-label="Previous">&lsaquo;</button>
+        <div class="carousel-track">
+            {% for i in range(1, 68) %}
+            <img src="/archive/2026_dtu/photos/DTUChipDay2026_{{ i | pad(2) }}.jpg"
+                 alt="Chip Day 2026 photo {{ i }}"
+                 loading="lazy"
+                 class="carousel-slide{% if i == 1 %} active{% endif %}">
+            {% endfor %}
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Next">&rsaquo;</button>
+    </div>
+    <div class="carousel-dots">
+        {% for i in range(1, 68) %}
+        <span class="carousel-dot{% if i == 1 %} active{% endif %}" data-index="{{ loop.index0 }}"></span>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+
+{# Program with PDF links #}
+<section id="program">
+    <h2>Program</h2>
+    <p class="subtitle">22 April 2026 &mdash; Glassalen, DTU Building 101</p>
+    <p style="color: var(--text-dim); max-width: 720px; margin: 0 auto 1.5rem auto; text-align: center;">
+        Download links appear next to talks whose speakers consented to publish.
+        No link means the deck was kept private by default &mdash; not an oversight.
+    </p>
+
+    {% for item in program2026 %}
+    <div class="program-item{% if item.type == 'keynote' %} program-keynote{% endif %}">
+        <div class="program-time">{{ item.time }}</div>
+        <div class="program-content">
+            <h3>{{ item.title }}</h3>
+            {% if item.type == "keynote" %}
+            <p class="speaker">{{ item.speaker }}{% if item.affiliation %} &mdash; {{ item.affiliation }}{% endif %}</p>
+            {% endif %}
+            {% if item.description %}
+            <p class="speaker">{{ item.description }}</p>
+            {% endif %}
+            {% if item.type == "keynote" and item.slides_public === true and item.slides_file %}
+            <p style="margin-top: 0.4rem;"><a href="/archive/2026_dtu/presentations/{{ item.slides_file }}" class="slide-link">Download slides (PDF) &rarr;</a></p>
+            {% endif %}
+            {% if item.talks %}
+            <ul class="talks">
+                {% for talk in item.talks %}
+                <li>
+                    {% if talk.lightning %}<span class="lightning-badge">Lightning talk</span> {% endif %}<strong>{{ talk.title }}</strong> &mdash; {{ talk.speaker }}{% if talk.affiliation %} ({{ talk.affiliation }}){% endif %}
+                    {% if talk.slides_public === true and talk.slides_file %}
+                    &middot; <a href="/archive/2026_dtu/presentations/{{ talk.slides_file }}" class="slide-link">slides (PDF)</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<hr class="divider">
+
+{# Event context / what happened #}
+<section id="about">
+    <h2>About the event</h2>
+    <p class="subtitle">DTU Chip Day 2026</p>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>The day</h3>
+            <p>Over 150 attendees from industry, academia, and government gathered at DTU Lyngby for a half-day of talks, exhibition stands, and networking. The program spanned education in Denmark, technical presentations from industry, and a closing keynote on opportunities for Danish chip design.</p>
+        </div>
+        <div class="about-card">
+            <h3>Slides &amp; consent</h3>
+            <p>Each speaker chose individually whether to publish their deck. Published slides are PDFs with clear speaker and affiliation attribution. The default for unresponsive or declined speakers is private &mdash; their material stays internal to the event.</p>
+        </div>
+        <div class="about-card">
+            <h3>Organisers</h3>
+            <p>Chip Day 2026 was organised by a small team from DTU Compute, DTU Electro, IC Works, GN, and Demant, with logistic support from the DTU Conference Office and sponsorship from the Danish chip design community.</p>
+        </div>
+    </div>
+</section>
+
+<p style="text-align: center; color: var(--text-dim); font-size: 0.85rem; margin: 3rem 0 1rem 0;">
+    Organiser files: <a href="/archive/2026_dtu/backstage/" style="color: var(--text-dim);">backstage</a> (password protected)
+</p>

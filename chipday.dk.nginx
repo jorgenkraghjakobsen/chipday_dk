@@ -77,9 +77,43 @@ server {
         try_files $uri =404;
     }
 
-    location /2026/ {
+    # Raw speaker uploads and merged session decks — stay protected.
+    location /2026/uploads/ {
         auth_basic "Chip Day 2026 - Speaker Area";
         auth_basic_user_file /etc/nginx/chipday.htpasswd;
+        try_files $uri $uri/ =404;
+    }
+
+    location /2026/merged/ {
+        auth_basic "Chip Day 2026 - Speaker Area";
+        auth_basic_user_file /etc/nginx/chipday.htpasswd;
+        try_files $uri $uri/ =404;
+    }
+
+    # Legacy /2026/ page → redirect to /backstage/.
+    # Exact matches only, so sub-paths like /2026/uploads/, /2026/merged/,
+    # /2026/press-release.html continue to serve files from the webroot.
+    location = /2026 {
+        return 301 /backstage/;
+    }
+    location = /2026/ {
+        return 301 /backstage/;
+    }
+    location = /2026/index.html {
+        return 301 /backstage/;
+    }
+
+    location /backstage/ {
+        auth_basic "Chip Day 2026 - Speaker Area";
+        auth_basic_user_file /etc/nginx/chipday.htpasswd;
+        try_files $uri $uri/ =404;
+    }
+
+    # Planning / intermediate files for 2026 — organizers only.
+    location /archive/2026_dtu/backstage/ {
+        auth_basic "Chip Day 2026 - Organizers";
+        auth_basic_user_file /etc/nginx/chipday.htpasswd;
+        autoindex on;
         try_files $uri $uri/ =404;
     }
 

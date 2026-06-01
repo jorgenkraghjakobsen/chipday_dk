@@ -222,7 +222,7 @@ def upload(slot_id):
     # Trigger merge in background
     trigger_merge(slot_id)
 
-    return redirect("/2026/#uploads")
+    return redirect("/backstage/#uploads")
 
 
 def load_quiz_status():

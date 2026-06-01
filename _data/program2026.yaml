@@ -8,6 +8,8 @@
   type: "keynote"
   speaker: "Michael da Costa Carneiro"
   affiliation: "GN, Digital IC Group Manager"
+  slides_public: true
+  slides_file: "carneiro-welcome.pdf"
 
 - time: "13:05"
   title: "Keynote: The Importance of IC Development"
@@ -15,6 +17,7 @@
   speaker: "Brian Dam Pedersen"
   affiliation: "GN, CTO"
   description: "The importance of IC development in general and what it has meant to the hearing aid business in Denmark"
+  slides_public: true
 
 - time: "13:20"
   title: "Chip Education in Denmark"
@@ -25,17 +28,23 @@
       speaker: "Per Lynggaard"
       affiliation: "DTU Electro, Prof."
       slides_public: true
+      slides_file: "lynggaard-analogue-courses.pdf"
     - title: "First Student Tape-Out"
       speaker: "Martin Schoeberl"
       affiliation: "DTU Compute, Prof."
       slides_public: true
+      slides_file: "schoeberl-student-tapeout.pdf"
     - title: "Research and Chip Courses at SDU"
       speaker: "Farshad Moradi"
       affiliation: "SDU Micro Electronics, Prof."
+      slides_public: true
+      slides_file: "moradi-icelab.pdf"
     - title: "The Industry Master at DTU – How to Attract Talent Early and Shape Future Engineers"
       speaker: "Katrine Schwab Rolver"
       affiliation: "DTU, Project Coordinator"
       lightning: true
+      slides_public: true
+      slides_file: "rolver-industry-master.pdf"
 
 - time: "14:00"
   title: "Networking Break"
@@ -48,10 +57,13 @@
     - title: "Lotus Microsystems"
       speaker: "Martin Lantz"
       affiliation: "Lotus Microsystems, IC Design Manager"
+      slides_public: true
+      slides_file: "lantz-lotus-microsystems.pdf"
     - title: "EDA Startup"
       speaker: "Nicolai Dahl"
       affiliation: "IC-Optimize, CTO & Founder"
       slides_public: true
+      slides_file: "dahl-eda-startup.pdf"
     - title: "DSP Audio Processing in FPGA for Jabra Product"
       speaker: "Jimmi Marquart"
       affiliation: "GN, Digital Hardware Designer"
@@ -74,6 +86,8 @@
     - title: "Quantum Foundry"
       speaker: "Tobias Saerkjaer"
       affiliation: "Quantum Foundry, Chip Design Engineer"
+      slides_public: true
+      slides_file: "saerkjaer-quantum-foundry.pdf"
     - title: "Ultra High Speed Communication"
       speaker: "Rasmus Lind"
       affiliation: "NVIDIA, Analog IC Designer"
