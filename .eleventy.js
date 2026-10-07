@@ -18,6 +18,8 @@ module.exports = function (eleventyConfig) {
   // Filter: events with status "upcoming" (Nunjucks selectattr can't test equality)
   eleventyConfig.addFilter("upcomingEvents", (events) => events.filter((e) => e.status === "upcoming"));
 
+  eleventyConfig.addFilter("pastEvents", (events) => events.filter((e) => e.status === "past"));
+
   // Filter: get archive entry by year
   eleventyConfig.addFilter("getByYear", function (arr, year) {
     return arr.find((item) => item.year === year);

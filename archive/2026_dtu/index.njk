@@ -10,7 +10,7 @@ permalink: /archive/2026_dtu/
     <div class="date-badge">14 APRIL 2026 &middot; DTU LYNGBY</div>
     <h1>DTU <span>Chip</span>day 2026</h1>
     <p>A half-day conference on the Danish chip design ecosystem &mdash; 12 talks across three sessions on chip education, technical industry work, and research outlooks. This page archives the program, photos, and presentations from the day.</p>
-    <p style="margin-top: 1rem;"><a href="/#archive" class="back-link">&larr; Back to all events</a></p>
+    <p style="margin-top: 1rem;"><a href="/archive/" class="back-link">&larr; Back to all events</a></p>
 </div>
 
 {# Photo Gallery #}
@@ -37,6 +37,41 @@ permalink: /archive/2026_dtu/
 </section>
 
 <hr class="divider">
+
+{# Sponsors & Exhibitors #}
+{% set sponsors = companies | selectattr("sponsor") %}
+{% if sponsors | length %}
+<section id="sponsors">
+    <h2>Sponsors &amp; Exhibitors</h2>
+    <p class="subtitle">Companies with a stand at DTU Chipday 2026</p>
+    <div class="sponsors-logo-grid">
+        {% for c in sponsors %}
+        <a href="{{ c.url }}" target="_blank" rel="noopener" class="sponsor-logo" title="{{ c.name }}" data-slug="{{ c.name | slugify }}" style="{% if c.scale %}--logo-scale: {{ c.scale }};{% endif %}{% if c.logo_bg %}--logo-bg: {{ c.logo_bg }}{% endif %}">
+            <span class="sponsor-fallback">{{ c.name }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+  fetch('/api/logo-status')
+    .then(r => r.json())
+    .then(data => {
+      document.querySelectorAll('.sponsor-logo[data-slug]').forEach(el => {
+        const slug = el.dataset.slug;
+        if (data[slug] && data[slug].uploaded) {
+          const img = document.createElement('img');
+          img.src = '/assets/logos/' + data[slug].filename;
+          img.alt = el.title;
+          el.querySelector('.sponsor-fallback').replaceWith(img);
+        }
+      });
+    })
+    .catch(() => {});
+</script>
+
+<hr class="divider">
+{% endif %}
 
 {# Program with PDF links #}
 <section id="program">

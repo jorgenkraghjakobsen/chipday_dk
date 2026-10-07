@@ -2,15 +2,14 @@
 layout: base.njk
 pageTitle: "DTU Chipday and SDU Chips & Dip"
 isHomepage: true
-needsLeaflet: true
 ---
 
 {# Hero #}
 <div class="hero">
     <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
-    <div class="date-badge">{{ site.event_date_display | upper }} &middot; DTU LYNGBY</div>
-    <h1>DTU <span>Chip</span>day {{ site.event_year }}</h1>
-    <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
+    <div class="date-badge">DANISH CHIP DESIGN EVENTS</div>
+    <h1>DTU <span>Chipday</span> and SDU <span>Chips &amp; Dip</span></h1>
+    <p>Meeting places for the Danish chip design community &mdash; students, researchers and industry. DTU Chipday in Lyngby and SDU Chips &amp; Dip in Odense.</p>
 </div>
 
 {# Upcoming events (from _data/events.yaml) #}
@@ -33,74 +32,26 @@ needsLeaflet: true
 <hr class="divider">
 {% endif %}
 
-{# Photo Gallery #}
-<section id="photos">
-    <h2>Chip Day 2026 in Pictures</h2>
-    <p class="subtitle">Photos by Hanne Klokkegaard</p>
-    <div class="carousel">
-        <button class="carousel-btn carousel-prev" aria-label="Previous">&lsaquo;</button>
-        <div class="carousel-track">
-            {% for i in range(1, 68) %}
-            <img src="/archive/2026_dtu/photos/DTUChipDay2026_{{ i | pad(2) }}.jpg"
-                 alt="Chip Day 2026 photo {{ i }}"
-                 loading="lazy"
-                 class="carousel-slide{% if i == 1 %} active{% endif %}">
-            {% endfor %}
-        </div>
-        <button class="carousel-btn carousel-next" aria-label="Next">&rsaquo;</button>
-    </div>
-    <div class="carousel-dots">
-        {% for i in range(1, 68) %}
-        <span class="carousel-dot{% if i == 1 %} active{% endif %}" data-index="{{ loop.index0 }}"></span>
-        {% endfor %}
-    </div>
-</section>
-
-<hr class="divider">
-
-{# Sponsors & Exhibitors #}
-{% set sponsors = companies | selectattr("sponsor") %}
-{% if sponsors | length %}
-<section id="sponsors">
-    <h2>Sponsors &amp; Exhibitors</h2>
-    <p class="subtitle">Companies with a stand at DTU Chipday {{ site.event_year }}</p>
-    <div class="sponsors-logo-grid">
-        {% for c in sponsors %}
-        <a href="{{ c.url }}" target="_blank" rel="noopener" class="sponsor-logo" title="{{ c.name }}" data-slug="{{ c.name | slugify }}" style="{% if c.scale %}--logo-scale: {{ c.scale }};{% endif %}{% if c.logo_bg %}--logo-bg: {{ c.logo_bg }}{% endif %}">
-            <span class="sponsor-fallback">{{ c.name }}</span>
+{# Past events #}
+<section id="past">
+    <h2>Past Events</h2>
+    <p class="subtitle">Programs, photos and slides from earlier editions</p>
+    <div class="upcoming-grid">
+        {% for ev in events | pastEvents %}
+        <a href="{{ ev.url }}" class="upcoming-card">
+            <span class="upcoming-date">{{ ev.date_display }}</span>
+            <strong>{{ ev.title }} {{ ev.date | truncate(4, true, "") }}</strong>
+            <span class="upcoming-venue">{{ ev.venue }}</span>
+            <span class="upcoming-more">Program, photos &amp; slides &rarr;</span>
         </a>
         {% endfor %}
+        <a href="/archive/" class="upcoming-card">
+            <span class="upcoming-date">2022&ndash;2025</span>
+            <strong>Earlier DTU Chipdays</strong>
+            <span class="upcoming-venue">Glassalen, DTU Lyngby</span>
+            <span class="upcoming-more">Full archive &rarr;</span>
+        </a>
     </div>
-</section>
-
-<script>
-  fetch('/api/logo-status')
-    .then(r => r.json())
-    .then(data => {
-      document.querySelectorAll('.sponsor-logo[data-slug]').forEach(el => {
-        const slug = el.dataset.slug;
-        if (data[slug] && data[slug].uploaded) {
-          const img = document.createElement('img');
-          img.src = '/assets/logos/' + data[slug].filename;
-          img.alt = el.title;
-          el.querySelector('.sponsor-fallback').replaceWith(img);
-        }
-      });
-    })
-    .catch(() => {});
-</script>
-
-<hr class="divider">
-{% endif %}
-
-{# Program #}
-<section id="program">
-    <h2>Program</h2>
-    <p class="subtitle">DTU Chip Day {{ site.event_year }} &mdash; {{ site.event_date_display }}</p>
-
-    {% for item in program2026 %}
-    {% include "partials/program-item.njk" %}
-    {% endfor %}
 </section>
 
 <hr class="divider">
@@ -137,13 +88,3 @@ needsLeaflet: true
         {% endfor %}
     </div>
 </section>
-
-<hr class="divider">
-
-{# Venue #}
-<section id="venue">
-    <h2>Venue</h2>
-    <p class="subtitle">{{ site.venue }}</p>
-    <div id="map"></div>
-</section>
-

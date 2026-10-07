@@ -779,21 +779,11 @@
             {% if navItems %}
             {% for n in navItems %}<li><a href="{{ n.href }}">{{ n.label }}</a></li>
             {% endfor %}
-            {% elif isHomepage %}
-            <li><a href="/sdu/">SDU Chips &amp; Dip</a></li>
-            <li><a href="#photos">Photos</a></li>
-            <li><a href="#program">Program</a></li>
-            <li><a href="/companies/">Ecosystem</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#venue">Venue</a></li>
-            <li><a href="/archive/">Archive</a></li>
             {% else %}
             <li><a href="/sdu/">SDU Chips &amp; Dip</a></li>
-            <li><a href="/#photos">Photos</a></li>
-            <li><a href="/#program">Program</a></li>
+            <li><a href="/archive/2026_dtu/">DTU Chipday 2026</a></li>
             <li><a href="/companies/">Ecosystem</a></li>
             <li><a href="/#about">About</a></li>
-            <li><a href="/#venue">Venue</a></li>
             <li><a href="/archive/">Archive</a></li>
             {% endif %}
         </ul>
