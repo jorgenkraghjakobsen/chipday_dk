@@ -84,6 +84,6 @@ footerHtml: '&copy; 2026 SDU Chips &amp; Dip &middot; Organised by <a href="http
 {# Venue #}
 <section id="venue">
     <h2>Venue</h2>
-    <p class="subtitle">{{ sdu.venue }}</p>
+    <p class="subtitle">{{ sdu.venue }}{% if sdu.venue_address %} &mdash; {{ sdu.venue_address }}{% endif %}</p>
     <div id="map"></div>
 </section>
