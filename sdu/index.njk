@@ -18,7 +18,7 @@ footerHtml: '&copy; 2026 SDU Chips &amp; Dip &middot; Organised by <a href="http
 {# Hero #}
 <div class="hero">
     <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
-    <div class="date-badge">{{ sdu.event_date_display | upper }} &middot; {{ sdu.time_display }} &middot; SDU ODENSE</div>
+    <div class="date-badge">{{ sdu.event_date_display | upper }} &middot; <span style="white-space:nowrap">{{ sdu.time_display }}</span> &middot; SDU ODENSE</div>
     <h1>SDU <span>Chips</span> &amp; Dip</h1>
     <p>An afternoon bringing students, researchers and industry together around microelectronics and chip design in Denmark. Talks, short research pitches, posters, demos and networking.</p>
     <div class="cta-group">
@@ -87,19 +87,3 @@ footerHtml: '&copy; 2026 SDU Chips &amp; Dip &middot; Organised by <a href="http
     <p class="subtitle">{{ sdu.venue }}</p>
     <div id="map"></div>
 </section>
-
-<script>
-  (function () {
-    const el = document.getElementById('countdown');
-    const target = new Date(el.dataset.target).getTime();
-    function tick() {
-      const diff = Math.max(0, target - Date.now());
-      const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60;
-      el.querySelector('[data-u=d]').textContent = d;
-      el.querySelector('[data-u=h]').textContent = String(h).padStart(2, '0');
-      el.querySelector('[data-u=m]').textContent = String(m).padStart(2, '0');
-      if (diff === 0) el.style.display = 'none';
-    }
-    tick(); setInterval(tick, 30000);
-  })();
-</script>

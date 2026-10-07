@@ -4,33 +4,22 @@ pageTitle: "DTU Chipday and SDU Chips & Dip"
 isHomepage: true
 ---
 
-{# Hero #}
+{# Hero: next event (SDU Chips & Dip) #}
 <div class="hero">
     <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
-    <div class="date-badge">DANISH CHIP DESIGN EVENTS</div>
-    <h1>DTU <span>Chipday</span> and SDU <span>Chips &amp; Dip</span></h1>
-    <p>Meeting places for the Danish chip design community &mdash; students, researchers and industry. DTU Chipday in Lyngby and SDU Chips &amp; Dip in Odense.</p>
-</div>
-
-{# Upcoming events (from _data/events.yaml) #}
-{% set upcoming = events | upcomingEvents %}
-{% if upcoming | length %}
-<section id="upcoming" class="upcoming">
-    <h2>Upcoming</h2>
-    <div class="upcoming-grid">
-        {% for ev in upcoming %}
-        <a href="{{ ev.url }}" class="upcoming-card">
-            <span class="upcoming-date">{{ ev.date_display }}{% if ev.time %} &middot; {{ ev.time }}{% endif %}</span>
-            <strong>{{ ev.title }}</strong>
-            <span class="upcoming-venue">{{ ev.venue }}</span>
-            <span class="upcoming-more">Program &amp; registration &rarr;</span>
-        </a>
-        {% endfor %}
+    <div class="date-badge">NEXT EVENT &middot; {{ sdu.event_date_display | upper }} &middot; <span style="white-space:nowrap">{{ sdu.time_display }}</span> &middot; SDU ODENSE</div>
+    <h1>SDU <span>Chips</span> &amp; Dip</h1>
+    <p>An afternoon bringing students, researchers and industry together around microelectronics and chip design in Denmark. Talks, short research pitches, posters, demos and networking at {{ sdu.venue }}.</p>
+    <div class="cta-group">
+        <a href="{{ sdu.registration_url }}" class="cta" target="_blank" rel="noopener">Register</a>
+        <a href="/sdu/" class="cta cta-secondary">Program &amp; details</a>
     </div>
-</section>
-
-<hr class="divider">
-{% endif %}
+    <div class="countdown" id="countdown" data-target="{{ sdu.event_date }}">
+        <div class="unit"><span class="num" data-u="d">--</span><span class="label">Days</span></div>
+        <div class="unit"><span class="num" data-u="h">--</span><span class="label">Hours</span></div>
+        <div class="unit"><span class="num" data-u="m">--</span><span class="label">Minutes</span></div>
+    </div>
+</div>
 
 {# Past events #}
 <section id="past">
