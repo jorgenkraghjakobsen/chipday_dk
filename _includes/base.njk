@@ -773,7 +773,7 @@
 <nav>
     <div class="nav-inner">
         {% if brand %}<a href="{{ brand.url }}" class="logo" style="text-decoration:none">{{ brand.html | safe }}</a>
-        {% else %}<a href="/" class="logo" style="text-decoration:none">DTU <span>Chipday</span></a>{% endif %}
+        {% else %}<a href="/" class="logo" style="text-decoration:none">DTU <span>Chipday</span> and SDU <span>Chips &amp; Dip</span></a>{% endif %}
         <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
         <ul>
             {% if navItems %}
