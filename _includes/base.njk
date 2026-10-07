@@ -569,7 +569,11 @@
             border-radius: 0.75rem;
             border: 1px solid var(--border);
             margin-top: 1.5rem;
+            overflow: hidden;
         }
+
+        #map .maplibregl-popup-content { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.6rem 0.9rem; font-size: 0.9rem; }
+        #map .maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--bg-card); }
 
         /* Archive */
         .archive-list {
@@ -774,8 +778,8 @@
             .page-header h1 { font-size: 2rem; }
         }
     </style>
-    {% if needsLeaflet %}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9/dist/leaflet.css" />
+    {% if needsMap %}
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" />
     {% endif %}
 </head>
 <body>
@@ -806,20 +810,27 @@
     <p>{% if footerHtml %}{{ footerHtml | safe }}{% else %}&copy; {{ site.event_year }} DTU Chipday and SDU Chips &amp; Dip &middot; Organised by <a href="https://icworks.dk">IC Works</a>, DTU and SDU{% endif %}</p>
 </footer>
 
-{% if needsLeaflet %}
-<script src="https://unpkg.com/leaflet@1.9/dist/leaflet.js"></script>
+{% if needsMap %}
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
 {% endif %}
 
-{% if needsLeaflet %}
+{% if needsMap %}
 {% set mapCfg = mapEvent or site %}
 <script>
-    // Map with dark tiles
-    const map = L.map('map', { scrollWheelZoom: false }).setView([{{ mapCfg.map_lat }}, {{ mapCfg.map_lng }}], {{ mapCfg.map_zoom }});
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OSM &amp; CARTO',
-        maxZoom: 19
-    }).addTo(map);
-    L.marker([{{ mapCfg.map_lat }}, {{ mapCfg.map_lng }}]).addTo(map).bindPopup('<strong>{{ mapCfg.map_label or "DTU Building 101" }}</strong><br>{{ mapCfg.title or "Chipday" }} venue').openPopup();
+    // Vector map, OpenFreeMap dark style (free, no API key)
+    const center = [{{ mapCfg.map_lng }}, {{ mapCfg.map_lat }}];
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://tiles.openfreemap.org/styles/dark',
+        center: center,
+        zoom: {{ mapCfg.map_zoom }},
+        scrollZoom: false,
+        attributionControl: { compact: true },
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
+    const popup = new maplibregl.Popup({ offset: 30, closeButton: false })
+        .setHTML('<strong>{{ mapCfg.map_label or "DTU Building 101" }}</strong><br>{{ mapCfg.title or "Chipday" }} venue');
+    new maplibregl.Marker({ color: '#c27d98' }).setLngLat(center).setPopup(popup).addTo(map).togglePopup();
 </script>
 {% endif %}
 

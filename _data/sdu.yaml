@@ -10,7 +10,7 @@ venue: "DreamLab, SDU Odense"
 # Approximate: SDU main campus, Campusvej 55, Odense M. Adjust once DreamLab's exact spot is confirmed.
 map_lat: 55.3687
 map_lng: 10.4280
-map_zoom: 16
+map_zoom: 15
 map_label: "DreamLab, SDU Odense"
 registration_url: "https://forms.cloud.microsoft/pages/responsepage.aspx?id=fcKXmj64lEazU1S9vxirW4E1RSdv7ahNmqezKRxKo3hUOVRYUUpHMkZCNjFHSTNMNkpKNUVQQVU0Mi4u"
 info_url: "https://www.sdu.dk/da/forskning/sdu-microelectronics/chipsndip"
