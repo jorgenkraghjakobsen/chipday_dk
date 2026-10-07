@@ -15,6 +15,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("archive/2026_dtu/presentations");
   eleventyConfig.addPassthroughCopy("archive/2026_dtu/*.pdf");
 
+  // Filter: events with status "upcoming" (Nunjucks selectattr can't test equality)
+  eleventyConfig.addFilter("upcomingEvents", (events) => events.filter((e) => e.status === "upcoming"));
+
   // Filter: get archive entry by year
   eleventyConfig.addFilter("getByYear", function (arr, year) {
     return arr.find((item) => item.year === year);

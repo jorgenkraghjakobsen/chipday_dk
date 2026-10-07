@@ -252,6 +252,21 @@
             letter-spacing: 1px;
         }
 
+
+        /* Upcoming events */
+        section.upcoming { padding-top: 2rem; padding-bottom: 3rem; }
+        .upcoming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .upcoming-card {
+            display: flex; flex-direction: column; gap: 0.3rem;
+            background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+            border-radius: 0.5rem; padding: 1.25rem 1.5rem; color: var(--text); transition: background 0.2s, border-color 0.2s;
+        }
+        .upcoming-card:hover { background: var(--bg-card-hover); border-color: var(--accent-dim); text-decoration: none; }
+        .upcoming-card strong { font-size: 1.35rem; }
+        .upcoming-date { color: var(--accent); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .upcoming-venue { color: var(--text-dim); }
+        .upcoming-more { color: var(--accent); font-size: 0.9rem; margin-top: 0.4rem; }
+
         /* Sections */
         section {
             max-width: 1100px;
@@ -757,10 +772,15 @@
 
 <nav>
     <div class="nav-inner">
-        <a href="/" class="logo" style="text-decoration:none">DTU <span>Chipday</span></a>
+        {% if brand %}<a href="{{ brand.url }}" class="logo" style="text-decoration:none">{{ brand.html | safe }}</a>
+        {% else %}<a href="/" class="logo" style="text-decoration:none">DTU <span>Chipday</span></a>{% endif %}
         <button class="hamburger" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
         <ul>
-            {% if isHomepage %}
+            {% if navItems %}
+            {% for n in navItems %}<li><a href="{{ n.href }}">{{ n.label }}</a></li>
+            {% endfor %}
+            {% elif isHomepage %}
+            <li><a href="/sdu/">SDU Chips &amp; Dip</a></li>
             <li><a href="#photos">Photos</a></li>
             <li><a href="#program">Program</a></li>
             <li><a href="/companies/">Ecosystem</a></li>
@@ -768,6 +788,7 @@
             <li><a href="#venue">Venue</a></li>
             <li><a href="/archive/">Archive</a></li>
             {% else %}
+            <li><a href="/sdu/">SDU Chips &amp; Dip</a></li>
             <li><a href="/#photos">Photos</a></li>
             <li><a href="/#program">Program</a></li>
             <li><a href="/companies/">Ecosystem</a></li>
@@ -782,22 +803,23 @@
 {{ content | safe }}
 
 <footer>
-    <p>&copy; {{ site.event_year }} DTU Chipday &middot; Organised by <a href="https://icworks.dk">IC Works</a> and DTU</p>
+    <p>{% if footerHtml %}{{ footerHtml | safe }}{% else %}&copy; {{ site.event_year }} DTU Chipday &middot; Organised by <a href="https://icworks.dk">IC Works</a> and DTU{% endif %}</p>
 </footer>
 
 {% if needsLeaflet %}
 <script src="https://unpkg.com/leaflet@1.9/dist/leaflet.js"></script>
 {% endif %}
 
-{% if isHomepage %}
+{% if needsLeaflet %}
+{% set mapCfg = mapEvent or site %}
 <script>
     // Map with dark tiles
-    const map = L.map('map', { scrollWheelZoom: false }).setView([{{ site.map_lat }}, {{ site.map_lng }}], {{ site.map_zoom }});
+    const map = L.map('map', { scrollWheelZoom: false }).setView([{{ mapCfg.map_lat }}, {{ mapCfg.map_lng }}], {{ mapCfg.map_zoom }});
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OSM &amp; CARTO',
         maxZoom: 19
     }).addTo(map);
-    L.marker([{{ site.map_lat }}, {{ site.map_lng }}]).addTo(map).bindPopup('<strong>DTU Building 101</strong><br>Chipday venue').openPopup();
+    L.marker([{{ mapCfg.map_lat }}, {{ mapCfg.map_lng }}]).addTo(map).bindPopup('<strong>{{ mapCfg.map_label or "DTU Building 101" }}</strong><br>{{ mapCfg.title or "Chipday" }} venue').openPopup();
 </script>
 {% endif %}
 

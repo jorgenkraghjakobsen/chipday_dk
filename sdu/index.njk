@@ -1,0 +1,105 @@
+---
+layout: base.njk
+permalink: /sdu/
+pageTitle: "SDU Chips & Dip - 20 November 2026"
+needsLeaflet: true
+brand:
+  url: "/sdu/"
+  html: "SDU <span>Chips &amp; Dip</span>"
+navItems:
+  - { href: "#program", label: "Program" }
+  - { href: "#about", label: "About" }
+  - { href: "#venue", label: "Venue" }
+  - { href: "/", label: "DTU Chipday" }
+  - { href: "/archive/", label: "Archive" }
+footerHtml: '&copy; 2026 SDU Chips &amp; Dip &middot; Organised by <a href="https://www.sdu.dk/da/forskning/sdu-microelectronics">SDU Microelectronics</a> &middot; Hosted on chipday.dk by <a href="https://icworks.dk">IC Works</a>'
+---
+
+{# Hero #}
+<div class="hero">
+    <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
+    <div class="date-badge">{{ sdu.event_date_display | upper }} &middot; {{ sdu.time_display }} &middot; SDU ODENSE</div>
+    <h1>SDU <span>Chips</span> &amp; Dip</h1>
+    <p>An afternoon bringing students, researchers and industry together around microelectronics and chip design in Denmark. Talks, short research pitches, posters, demos and networking.</p>
+    <div class="cta-group">
+        {% if sdu.registration_url %}
+        <a href="{{ sdu.registration_url }}" class="cta" target="_blank" rel="noopener">Register</a>
+        {% endif %}
+        <a href="{{ sdu.info_url }}" class="cta cta-secondary" target="_blank" rel="noopener">Event page at SDU</a>
+    </div>
+    <div class="countdown" id="countdown" data-target="{{ sdu.event_date }}">
+        <div class="unit"><span class="num" data-u="d">--</span><span class="label">Days</span></div>
+        <div class="unit"><span class="num" data-u="h">--</span><span class="label">Hours</span></div>
+        <div class="unit"><span class="num" data-u="m">--</span><span class="label">Minutes</span></div>
+    </div>
+</div>
+
+{# Program #}
+<section id="program">
+    <h2>Program</h2>
+    <p class="subtitle">{{ sdu.title }} &mdash; {{ sdu.event_date_display }}, {{ sdu.time_display }}. Speakers to be announced.</p>
+
+    {% for item in sdu.program %}
+    {% include "partials/program-item.njk" %}
+    {% endfor %}
+</section>
+
+<hr class="divider">
+
+{# About #}
+<section id="about">
+    <h2>About</h2>
+    <p class="subtitle">What is Chips &amp; Dip?</p>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>The Event</h3>
+            <p>Chips &amp; Dip is an afternoon event hosted by SDU Microelectronics in Odense. It brings together students, researchers and industry to talk about microelectronics and chip design &mdash; with lectures, short research pitches, posters, technology demos and plenty of time to network.</p>
+        </div>
+        <div class="about-card">
+            <h3>Who Should Attend</h3>
+            <p>Students, researchers and industry professionals interested in microelectronics and chip design. The event is held in {{ sdu.language }}. Participation requires <a href="{{ sdu.registration_url }}" target="_blank" rel="noopener">registration</a>.</p>
+        </div>
+        <div class="about-card">
+            <h3>Part of the Danish Chip Community</h3>
+            <p>Chips &amp; Dip sits alongside <a href="/">DTU Chipday</a> in Lyngby as a meeting place for the Danish chip design ecosystem.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Contact</h3>
+    <div class="companies-grid" style="max-width: 1000px;">
+        {% for org in sdu.organizers %}
+        <div class="about-card">
+            <h3>{{ org.name }}</h3>
+            <p>{{ org.role }}
+            {% if org.email %}<br><a href="mailto:{{ org.email }}">{{ org.email }}</a>{% endif %}
+            {% if org.phone %}<br><a href="tel:{{ org.phone | replace(' ', '') }}">{{ org.phone }}</a>{% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+
+{# Venue #}
+<section id="venue">
+    <h2>Venue</h2>
+    <p class="subtitle">{{ sdu.venue }}</p>
+    <div id="map"></div>
+</section>
+
+<script>
+  (function () {
+    const el = document.getElementById('countdown');
+    const target = new Date(el.dataset.target).getTime();
+    function tick() {
+      const diff = Math.max(0, target - Date.now());
+      const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60;
+      el.querySelector('[data-u=d]').textContent = d;
+      el.querySelector('[data-u=h]').textContent = String(h).padStart(2, '0');
+      el.querySelector('[data-u=m]').textContent = String(m).padStart(2, '0');
+      if (diff === 0) el.style.display = 'none';
+    }
+    tick(); setInterval(tick, 30000);
+  })();
+</script>

@@ -12,6 +12,26 @@ needsLeaflet: true
     <p>A half-day conference and exhibition for students, faculty, and industry professionals to explore and develop the Danish chip design ecosystem.</p>
 </div>
 
+{# Upcoming events (from _data/events.yaml) #}
+{% set upcoming = events | upcomingEvents %}
+{% if upcoming | length %}
+<section id="upcoming" class="upcoming">
+    <h2>Upcoming</h2>
+    <div class="upcoming-grid">
+        {% for ev in upcoming %}
+        <a href="{{ ev.url }}" class="upcoming-card">
+            <span class="upcoming-date">{{ ev.date_display }}{% if ev.time %} &middot; {{ ev.time }}{% endif %}</span>
+            <strong>{{ ev.title }}</strong>
+            <span class="upcoming-venue">{{ ev.venue }}</span>
+            <span class="upcoming-more">Program &amp; registration &rarr;</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+{% endif %}
+
 {# Photo Gallery #}
 <section id="photos">
     <h2>Chip Day 2026 in Pictures</h2>

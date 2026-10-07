@@ -1,0 +1,20 @@
+# All events hosted on chipday.dk, newest first.
+# status: upcoming | past
+- slug: sdu-2026
+  title: "SDU Chips & Dip"
+  host: "SDU"
+  date: "2026-11-20"
+  date_display: "20 November 2026"
+  time: "13:00–16:45"
+  venue: "DreamLab, SDU Odense"
+  url: "/sdu/"
+  status: upcoming
+
+- slug: dtu-2026
+  title: "DTU Chipday"
+  host: "DTU"
+  date: "2026-04-14"
+  date_display: "14 April 2026"
+  venue: "Glassalen, DTU Building 101"
+  url: "/archive/2026_dtu/"
+  status: past
