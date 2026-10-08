@@ -1,5 +1,5 @@
 <div class="program-item{% if item.type == 'keynote' %} program-keynote{% endif %}">
-    <div class="program-time">{{ item.time }}</div>
+    {% if item.time %}<div class="program-time">{{ item.time }}</div>{% endif %}
     <div class="program-content">
         <h3>{{ item.title }}</h3>
         {% if item.type == "keynote" %}
