@@ -1,0 +1,92 @@
+---
+layout: base.njk
+permalink: /dtu/
+pageTitle: "DTU Chipday 2027 - 20 April 2027"
+needsMap: true
+brand:
+  url: "/dtu/"
+  html: "DTU <span>Chipday</span> 2027"
+navItems:
+  - { href: "#program", label: "Program" }
+  - { href: "#about", label: "About" }
+  - { href: "#venue", label: "Venue" }
+  - { href: "/sdu/", label: "SDU Chips & Dip" }
+  - { href: "/archive/", label: "Archive" }
+---
+
+{# Hero #}
+<div class="hero">
+    <img src="/assets/hero-wafer.jpg" alt="Chip dies on a wafer" class="hero-wafer">
+    <div class="date-badge">SAVE THE DATE &middot; {{ dtu2027.event_date_display | upper }} &middot; <span style="white-space:nowrap">{{ dtu2027.time_display }}</span> &middot; DTU LYNGBY</div>
+    <h1>DTU <span>Chipday</span> 2027</h1>
+    <p>The fifth DTU Chipday: an afternoon conference and exhibition on the Danish chip design ecosystem, for students, researchers and industry. This year in the {{ dtu2027.venue }}.</p>
+    <div class="cta-group">
+        {% if dtu2027.registration_url %}
+        <a href="{{ dtu2027.registration_url }}" class="cta" target="_blank" rel="noopener">Register</a>
+        {% endif %}
+        <a href="{{ dtu2027.ics_url }}" class="cta{% if dtu2027.registration_url %} cta-secondary{% endif %}">Add to calendar</a>
+        {% if dtu2027.info_url %}
+        <a href="{{ dtu2027.info_url }}" class="cta cta-secondary" target="_blank" rel="noopener">Event page at DTU</a>
+        {% endif %}
+        <a href="/archive/2026_dtu/" class="cta cta-secondary">See the 2026 edition</a>
+    </div>
+    <div class="countdown" id="countdown" data-target="{{ dtu2027.event_date }}">
+        <div class="unit"><span class="num" data-u="d">--</span><span class="label">Days</span></div>
+        <div class="unit"><span class="num" data-u="h">--</span><span class="label">Hours</span></div>
+        <div class="unit"><span class="num" data-u="m">--</span><span class="label">Minutes</span></div>
+    </div>
+</div>
+
+{# Program #}
+<section id="program">
+    <h2>Program</h2>
+    <p class="subtitle">{{ dtu2027.title }} &mdash; {{ dtu2027.event_date_display }}, {{ dtu2027.time_display }}.</p>
+    <div class="about-card">
+        <h3>Program coming in early 2027</h3>
+        <p>The organizing team starts planning in January 2027, and speakers and the program will be published here. Until then, the <a href="/archive/2026_dtu/">2026 program, photos and slides</a> show what to expect: talks on chip education, technical industry work and research outlooks, plus company booths.</p>
+    </div>
+</section>
+
+<hr class="divider">
+
+{# About #}
+<section id="about">
+    <h2>About</h2>
+    <p class="subtitle">What is DTU Chipday?</p>
+    <div class="about-grid">
+        <div class="about-card">
+            <h3>The Event</h3>
+            <p>DTU Chipday is a yearly half-day conference and exhibition, started in 2022 by DTU Compute and a group of industry players to highlight the Danish semiconductor industry. 2027 is the fifth edition. It moves to the larger {{ dtu2027.venue }} to make room for more company booths.</p>
+        </div>
+        <div class="about-card">
+            <h3>Who Should Attend</h3>
+            <p>Students, faculty and industry professionals interested in the Danish chip design ecosystem. Expect talks, company exhibitions, networking, and openings for thesis projects and jobs.</p>
+        </div>
+        <div class="about-card">
+            <h3>Exhibiting</h3>
+            <p>Companies that want a booth at DTU Chipday 2027 are welcome to contact the organizing team below.</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 1.5rem; margin-bottom: 1rem;">Contact Organizing Team</h3>
+    <div class="companies-grid" style="max-width: 700px;">
+        {% for org in organizers %}
+        <div class="about-card">
+            <h3>{{ org.name }}</h3>
+            <p>{{ org.role }}<br>
+            <a href="mailto:{{ org.email }}">{{ org.email }}</a>
+            {% if org.phone %}<br><a href="tel:{{ org.phone | replace(' ', '') }}">{{ org.phone }}</a>{% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+
+{# Venue #}
+<section id="venue">
+    <h2>Venue</h2>
+    <p class="subtitle">{{ dtu2027.venue }}{% if dtu2027.venue_address %} &mdash; {{ dtu2027.venue_address }}{% endif %}</p>
+    <div id="map"></div>
+</section>

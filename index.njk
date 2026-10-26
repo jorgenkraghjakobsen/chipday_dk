@@ -21,6 +21,24 @@ isHomepage: true
     </div>
 </div>
 
+{# Upcoming events (besides the hero) #}
+<section id="upcoming">
+    <h2>Upcoming Events</h2>
+    <p class="subtitle">Save the dates</p>
+    <div class="upcoming-grid">
+        {% for ev in events | upcomingEvents | reverse %}
+        <a href="{{ ev.url }}" class="upcoming-card">
+            <span class="upcoming-date">{{ ev.date_display }}{% if ev.time %} &middot; {{ ev.time }}{% endif %}</span>
+            <strong>{{ ev.title }} {{ ev.date | truncate(4, true, "") }}</strong>
+            <span class="upcoming-venue">{{ ev.venue }}</span>
+            <span class="upcoming-more">Details &rarr;</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<hr class="divider">
+
 {# Past events #}
 <section id="past">
     <h2>Past Events</h2>

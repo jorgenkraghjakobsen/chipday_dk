@@ -1,5 +1,15 @@
 # All events hosted on chipday.dk, newest first.
 # status: upcoming | past
+- slug: dtu-2027
+  title: "DTU Chipday"
+  host: "DTU"
+  date: "2027-04-20"
+  date_display: "20 April 2027"
+  time: "12:00–18:30"
+  venue: "Demant Hall, DTU Lyngby"
+  url: "/dtu/"
+  status: upcoming
+
 - slug: sdu-2026
   title: "SDU Chips & Dip"
   host: "SDU"
