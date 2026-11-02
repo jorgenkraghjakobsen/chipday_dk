@@ -9,9 +9,10 @@ event_year: 2027
 time_display: "12:00–18:30"
 venue: "Demant Hall, DTU Lyngby"
 venue_address: "Formerly the Oticon Hall · Anker Engelunds Vej, 2800 Kgs. Lyngby"
-# DTU Lyngby campus centre (Building 101 area); refine to the hall entrance if needed.
-map_lat: 55.786
-map_lng: 12.524
+# Demant Hall = DTU Building 107 (OSM way 25636885, "Demant Salen").
+# Centre of the building; OSM has no entrance node mapped on it.
+map_lat: 55.78688
+map_lng: 12.52591
 map_zoom: 16
 map_label: "Demant Hall, DTU Lyngby"
 ics_url: "https://chipdesign.dk/events/dtu-chipday-2027/dtu-chipday-2027.ics"
