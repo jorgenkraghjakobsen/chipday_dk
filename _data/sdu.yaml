@@ -1,6 +1,8 @@
 # SDU Chips & Dip 2026
 # Official page: https://www.sdu.dk/da/forskning/sdu-microelectronics/chipsndip
-# Program from Milad Zamani's draft agenda (Agenda_Final.docx, LinkedIn 27 Aug 2026).
+# Program from Milad Zamani's updated agenda (mail "Program update on ChipnDips", 26 Oct 2026):
+# two industry talks, Meta (Michael Smedegaard) and Nvidia (Charles Augustine).
+# Charles's title from his LinkedIn message, 1 Nov 2026. Meta title not received yet.
 # No times per item: Milad asked (mail 8 Oct 2026) to drop timing while the program may change.
 title: "SDU Chips & Dip"
 event_date: "2026-11-20T13:00:00+01:00"
@@ -35,18 +37,24 @@ organizers:
 program:
   - title: "Opening"
     type: "break"
-  - title: "SDU Welcome"
-    type: "session"
   - title: "Microelectronics @ SDU"
     type: "session"
-  - title: "Industry Talk: Chip Design in Denmark"
+  - title: "Industry Talk: Meta"
     type: "keynote"
+    speaker: "Michael Smedegaard"
+    affiliation: "Meta"
+  - title: "Can AI Design Its Own Chips? Only if the chips can check its homework"
+    type: "keynote"
+    speaker: "Charles Augustine"
+    affiliation: "NVIDIA"
   - title: "Inspiring Pitches"
     type: "session"
     description: "4 × 5-minute pitches from the section"
-  - title: "Open Source Chip Design + SDU Activities"
-    type: "session"
-  - title: "Posters, Demos, Networking + Chips & Dip"
+  - title: "Chip design using open source tools and PDKs"
+    type: "keynote"
+    speaker: "Jørgen Kragh Jakobsen"
+    affiliation: "IC Works"
+  - title: "Posters, Networking + Chips & Dip"
     type: "break"
   - title: "Live Quiz Competition"
     type: "session"
