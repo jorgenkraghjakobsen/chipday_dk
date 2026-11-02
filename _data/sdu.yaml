@@ -30,7 +30,7 @@ organizers:
     role: "Associate Professor, SDU"
     email: "mzamani@sdu.dk"
   - name: "Jorgen Kragh Jakobsen"
-    role: "IC Works"
+    role: "CTO & Founder, IC Works"
     email: "jkj@icworks.dk"
     phone: "+45 5194 7707"
 
@@ -53,7 +53,7 @@ program:
   - title: "Chip design using open source tools and PDKs"
     type: "keynote"
     speaker: "Jørgen Kragh Jakobsen"
-    affiliation: "IC Works"
+    affiliation: "CTO & Founder, IC Works"
   - title: "Posters, Networking + Chips & Dip"
     type: "break"
   - title: "Live Quiz Competition"
